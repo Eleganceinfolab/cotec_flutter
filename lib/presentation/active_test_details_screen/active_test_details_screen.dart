@@ -349,7 +349,7 @@ class ActiveTestDetailScreen
                   },
                 )),
                 SizedBox(
-                  width: getWidth(10),
+                  width: getWidth(11),
                 ),
                 Expanded(
                     child: AppElevatedButton(
