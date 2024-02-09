@@ -51,6 +51,7 @@ dependencies:
   dropdown_button2: ^2.3.9
   syncfusion_flutter_gauges:
   image_picker: ^1.0.7
+  firebase_core: ^2.25.4
 
 dev_dependencies:
   flutter_test:
