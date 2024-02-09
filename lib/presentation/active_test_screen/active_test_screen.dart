@@ -39,7 +39,7 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                     children: [
                       Obx(() => !controller.hasMeterView.value
                           ? ClipRRect(
-                              borderRadius: BorderRadius.circular(250),
+                              borderRadius: BorderRadius.circular(getWidth(50)),
                               child: SfRadialGauge(
                                   // enableLoadingAnimation: true,
                                   backgroundColor: ColorConstant.primaryWhite,

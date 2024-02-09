@@ -307,6 +307,7 @@ class HomeScreenController extends GetxController {
         ),
         firstButtonTitle: AppString.ok,
         firstOnPressed: () {
+          Get.back();
           reachingLogsLimitReached(context);
         },
         context: context);
@@ -343,7 +344,6 @@ class HomeScreenController extends GetxController {
         ),
         firstButtonTitle: AppString.ok,
         firstOnPressed: () {
-          Get.back();
           Get.back();
         },
         context: context);
