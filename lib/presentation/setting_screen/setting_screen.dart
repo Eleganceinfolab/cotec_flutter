@@ -1,4 +1,5 @@
 import 'package:cotec/core/app_export.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'controller/setting_screen_controller.dart';
 
@@ -9,7 +10,7 @@ class SettingScreen extends GetWidget<SettingScreenController> {
   Widget build(BuildContext context) {
     sizeCalculate(context);
     return Scaffold(
-        backgroundColor: ColorConstant.backGroundColor,
+        backgroundColor: ColorConstant.backgroundColor(context),
         appBar: const CommonAppbar(title: AppString.setting),
         body: SingleChildScrollView(
           child: Padding(
@@ -22,6 +23,7 @@ class SettingScreen extends GetWidget<SettingScreenController> {
                 listTileList(
                   title: AppString.changePin,
                   svgPath: ImageConstant.changePin,
+                  context: context,
                   onTap: () {
                     confirmLicenseDialog(context);
                   },
@@ -29,6 +31,7 @@ class SettingScreen extends GetWidget<SettingScreenController> {
                 listTileList(
                   title: AppString.setCompanyName,
                   svgPath: ImageConstant.company,
+                  context: context,
                   onTap: () {
                     setCompanyNameDialog(context);
                   },
@@ -36,25 +39,91 @@ class SettingScreen extends GetWidget<SettingScreenController> {
                 listTileList(
                   title: AppString.clearAppData,
                   svgPath: ImageConstant.clearData,
+                  context: context,
                   onTap: () {},
                 ),
-                listTileList(
-                  title: AppString.themes,
-                  svgPath: ImageConstant.theme,
-                  onTap: () {},
+                Column(
+                  children: [
+                    Bounce(
+                      onTap: () {},
+                      child: Container(
+                        decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.grey.withOpacity(
+                                      Theme.of(context).brightness ==
+                                              Brightness.light
+                                          ? 0.3
+                                          : 0.0),
+                                  blurRadius: 5.0,
+                                  spreadRadius: 0.5),
+                            ],
+                            borderRadius: BorderRadius.circular(15),
+                            color: ColorConstant.containerBackGround(context)),
+                        padding: EdgeInsets.symmetric(
+                            horizontal: getWidth(12), vertical: getHeight(15)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                CustomImageView(
+                                  svgPath: ImageConstant.theme,
+                                  color: ColorConstant.textDarkTOLight(context),
+                                ),
+                                SizedBox(
+                                  width: getWidth(10),
+                                ),
+                                Text(
+                                  AppString.themes,
+                                  style: CTC.style(16,
+                                      fontWeight: FontWeight.w600,
+                                      fontColor: ColorConstant.textDarkTOLight(
+                                          context)),
+                                )
+                              ],
+                            ),
+                            Obx(
+                              () => CupertinoSwitch(
+                                value: controller.currentTheme.value ==
+                                    ThemeMode.dark,
+                                onChanged: (value) {
+                                  controller.switchTheme();
+                                  Get.changeThemeMode(
+                                      controller.currentTheme.value);
+
+                                  // controller.hasLightDark.value = value;
+                                },
+                                trackColor: ColorConstant.backGroundColor,
+                                thumbColor: ColorConstant.primaryWhite,
+                                activeColor: ColorConstant.primaryYellow,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: getHeight(20),
+                    )
+                  ],
                 ),
                 listTileList(
                   title: AppString.largerFont,
                   svgPath: ImageConstant.font,
+                  context: context,
                   onTap: () {},
                 ),
                 listTileList(
                   title: AppString.tones,
                   svgPath: ImageConstant.music,
+                  context: context,
                   onTap: () {},
                 ),
                 listTileList(
                   title: AppString.storingLogOffline,
+                  context: context,
                   svgPath: ImageConstant.storeLog,
                   onTap: () {
                     storingOfflineDialog(context);
@@ -69,6 +138,7 @@ class SettingScreen extends GetWidget<SettingScreenController> {
   Widget listTileList(
       {required String title,
       required String svgPath,
+      required BuildContext context,
       required void Function() onTap}) {
     return Column(
       children: [
@@ -78,12 +148,15 @@ class SettingScreen extends GetWidget<SettingScreenController> {
             decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
-                      color: Colors.grey.withOpacity(0.3),
+                      color: Colors.grey.withOpacity(
+                          Theme.of(context).brightness == Brightness.light
+                              ? 0.3
+                              : 0.0),
                       blurRadius: 5.0,
                       spreadRadius: 0.5),
                 ],
                 borderRadius: BorderRadius.circular(15),
-                color: ColorConstant.primaryWhite),
+                color: ColorConstant.containerBackGround(context)),
             padding: EdgeInsets.symmetric(
                 horizontal: getWidth(12), vertical: getHeight(15)),
             child: Row(
@@ -91,6 +164,7 @@ class SettingScreen extends GetWidget<SettingScreenController> {
               children: [
                 CustomImageView(
                   svgPath: svgPath,
+                  color: ColorConstant.textDarkTOLight(context),
                 ),
                 SizedBox(
                   width: getWidth(10),
@@ -99,7 +173,7 @@ class SettingScreen extends GetWidget<SettingScreenController> {
                   title,
                   style: CTC.style(16,
                       fontWeight: FontWeight.w600,
-                      fontColor: ColorConstant.primaryBlue),
+                      fontColor: ColorConstant.textDarkTOLight(context)),
                 )
               ],
             ),
@@ -121,7 +195,9 @@ class SettingScreen extends GetWidget<SettingScreenController> {
             Center(
               child: Text(
                 AppString.setCompanyName,
-                style: CTC.style(21, fontWeight: FontWeight.w600),
+                style: CTC.style(21,
+                    fontWeight: FontWeight.w600,
+                    fontColor: ColorConstant.textBlackToYellow(context)),
               ),
             ),
             SizedBox(
@@ -129,7 +205,9 @@ class SettingScreen extends GetWidget<SettingScreenController> {
             ),
             Text(
               AppString.companyName,
-              style: CTC.style(14, fontWeight: FontWeight.w500),
+              style: CTC.style(14,
+                  fontWeight: FontWeight.w500,
+                  fontColor: ColorConstant.textGrey4c4cToWhite(context)),
             ),
             SizedBox(
               height: getHeight(8),
@@ -148,7 +226,9 @@ class SettingScreen extends GetWidget<SettingScreenController> {
             ),
             Text(
               AppString.depot,
-              style: CTC.style(14, fontWeight: FontWeight.w500),
+              style: CTC.style(14,
+                  fontWeight: FontWeight.w500,
+                  fontColor: ColorConstant.textGrey4c4cToWhite(context)),
             ),
             SizedBox(
               height: getHeight(8),
@@ -198,20 +278,23 @@ class SettingScreen extends GetWidget<SettingScreenController> {
             Center(
               child: Text(
                 AppString.storingLogOffline,
+                textAlign: TextAlign.center,
                 style: CTC.style(21,
                     fontWeight: FontWeight.w600,
-                    fontColor: ColorConstant.primaryBlue),
+                    fontColor: ColorConstant.textBlueToYellow(context)),
               ),
             ),
             SizedBox(
               height: getHeight(10),
             ),
-            Text(
-              AppString.storeText,
-              textAlign: TextAlign.center,
-              style: CTC.style(14,
-                  fontWeight: FontWeight.w500,
-                  fontColor: ColorConstant.primaryBlue),
+            Center(
+              child: Text(
+                AppString.storeText,
+                textAlign: TextAlign.center,
+                style: CTC.style(14,
+                    fontWeight: FontWeight.w500,
+                    fontColor: ColorConstant.textDarkTOLight(context)),
+              ),
             ),
             SizedBox(
               height: getHeight(30),
@@ -222,7 +305,7 @@ class SettingScreen extends GetWidget<SettingScreenController> {
                   AppString.storeDeleting,
                   style: CTC.style(18,
                       fontWeight: FontWeight.w600,
-                      fontColor: ColorConstant.primaryBlue),
+                      fontColor: ColorConstant.textDarkTOLight(context)),
                 ),
                 fillColor:
                     MaterialStatePropertyAll(ColorConstant.primaryYellow),
@@ -242,7 +325,7 @@ class SettingScreen extends GetWidget<SettingScreenController> {
                   AppString.overwrite,
                   style: CTC.style(18,
                       fontWeight: FontWeight.w600,
-                      fontColor: ColorConstant.primaryBlue),
+                      fontColor: ColorConstant.textDarkTOLight(context)),
                 ),
                 fillColor:
                     MaterialStatePropertyAll(ColorConstant.primaryYellow),
@@ -258,6 +341,10 @@ class SettingScreen extends GetWidget<SettingScreenController> {
             ),
           ],
         ),
+        firstButtonTitle: AppString.submit,
+        firstOnPressed: () {
+          Get.back();
+        },
         context: context);
   }
 
@@ -269,7 +356,9 @@ class SettingScreen extends GetWidget<SettingScreenController> {
             Center(
               child: Text(
                 AppString.confirmLicense,
-                style: CTC.style(21, fontWeight: FontWeight.w600),
+                style: CTC.style(21,
+                    fontWeight: FontWeight.w600,
+                    fontColor: ColorConstant.textBlackToYellow(context)),
               ),
             ),
             SizedBox(
@@ -279,7 +368,8 @@ class SettingScreen extends GetWidget<SettingScreenController> {
               child: Text(
                 AppString.confirmLicenseText,
                 textAlign: TextAlign.center,
-                style: CTC.style(16),
+                style: CTC.style(16,
+                    fontColor: ColorConstant.textDarkTOLight(context)),
               ),
             ),
             SizedBox(
@@ -287,7 +377,9 @@ class SettingScreen extends GetWidget<SettingScreenController> {
             ),
             Text(
               AppString.licenseKey,
-              style: CTC.style(14, fontWeight: FontWeight.w500),
+              style: CTC.style(14,
+                  fontWeight: FontWeight.w500,
+                  fontColor: ColorConstant.textGrey4c4cToWhite(context)),
             ),
             SizedBox(
               height: getHeight(8),
@@ -306,7 +398,9 @@ class SettingScreen extends GetWidget<SettingScreenController> {
             ),
             Text(
               AppString.companyName,
-              style: CTC.style(14, fontWeight: FontWeight.w500),
+              style: CTC.style(14,
+                  fontWeight: FontWeight.w500,
+                  fontColor: ColorConstant.textGrey4c4cToWhite(context)),
             ),
             SizedBox(
               height: getHeight(8),

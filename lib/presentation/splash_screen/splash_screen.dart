@@ -1,3 +1,4 @@
+import 'package:cotec/core/app_export.dart';
 import 'package:cotec/core/utils/image_constant.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ class SplashScreen extends GetWidget<SplashScreenController> {
   Widget build(BuildContext context) {
     sizeCalculate(context);
     return Scaffold(
+      backgroundColor: ColorConstant.backgroundColor(context),
         body: Center(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: getWidth(65)),

@@ -10,11 +10,13 @@ import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import '../app_export.dart';
+import 'hive_helper.dart';
 
 class CommonConstant {
   CommonConstant._();
 
   static final instance = CommonConstant._();
+  DbHelper dbHelper = DbHelper();
 
   String emailPattern =
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
@@ -112,63 +114,12 @@ class CommonConstant {
     }
   }
 
-  CustomCupertinoBottomDilouge({
-    String? headText,
-    required String firstText,
-    Color secondTextColor = ColorConstant.redWithOpecity,
-    required Function firstTextOnTap,
-    String? secondText,
-    Function? secondTextOnTap,
-    Function? cancelButtonTap,
-    required BuildContext context,
-  }) {
-    final action = CupertinoActionSheet(
-      actions: [
-        if (headText != null)
-          CupertinoActionSheetAction(onPressed: () {}, child: Text(headText)),
-        CupertinoActionSheetAction(
-            isDefaultAction: true,
-            onPressed: () {
-              firstTextOnTap.call();
-            },
-            child: Text(
-              firstText,
-              style: CTC.style(20,
-                  fontColor: ColorConstant.primaryRed,
-                  fontWeight: FontWeight.bold),
-            )),
-        if (secondText != null || secondTextOnTap != null)
-          CupertinoActionSheetAction(
-              isDefaultAction: true,
-              onPressed: () {
-                secondTextOnTap!.call();
-              },
-              child: Text(secondText ?? '',
-                  style: CTC.style(20,
-                      fontColor: ColorConstant.primaryRed,
-                      fontWeight: FontWeight.bold))),
-      ],
-      cancelButton: CupertinoActionSheetAction(
-        child: Text('Cancel',
-            style: CTC.style(20,
-                fontColor: ColorConstant.primaryBlack,
-                fontWeight: FontWeight.bold)),
-        onPressed: () {
-          Get.back();
-        },
-      ),
-    );
-    showCupertinoModalPopup(
-        context: context,
-        builder: (context) => action,
-        barrierColor: ColorConstant.primaryBlack.withOpacity(0.5));
-  }
-
   void commonShowDialogs({
     required Widget child,
     required BuildContext context,
     String? firstButtonTitle,
     double? radius,
+    Color? backgroundColor,
     void Function()? firstOnPressed,
     String? secondButtonTitle,
     void Function()? secondOnPressed,
@@ -179,13 +130,16 @@ class CommonConstant {
           return AlertDialog(
             insetPadding: EdgeInsets.symmetric(horizontal: getWidth(20)),
             contentPadding: EdgeInsets.zero,
-            backgroundColor: ColorConstant.primaryWhite,
-            surfaceTintColor: ColorConstant.primaryWhite,
+            backgroundColor:
+                backgroundColor ?? ColorConstant.containerBackGround(context),
+            surfaceTintColor:
+                backgroundColor ?? ColorConstant.containerBackGround(context),
             content: Container(
               width: double.maxFinite,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(radius ?? 20),
-                color: ColorConstant.primaryWhite,
+                color: backgroundColor ??
+                    ColorConstant.containerBackGround(context),
               ),
               padding: EdgeInsets.symmetric(
                   vertical: getHeight(30), horizontal: getWidth(22)),
@@ -210,7 +164,9 @@ class CommonConstant {
                   secondButtonTitle != null
                       ? AppElevatedButton(
                           hasGradient: false,
-                          buttonColor: ColorConstant.primaryWhite,
+                          textColor: ColorConstant.textBlueToYellow(context),
+                          buttonColor:
+                              ColorConstant.containerBackGround(context),
                           buttonName: secondButtonTitle,
                           onPressed: secondOnPressed ?? () {})
                       : SizedBox.shrink(),

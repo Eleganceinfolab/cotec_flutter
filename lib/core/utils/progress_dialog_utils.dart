@@ -1,6 +1,4 @@
 import 'package:cotec/core/app_export.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class ProgressDialogUtils {
   static bool isProgressVisible = false;
@@ -13,7 +11,7 @@ class ProgressDialogUtils {
           child: CircularProgressIndicator(
             strokeWidth: 4,
             valueColor: AlwaysStoppedAnimation<Color>(
-              ColorConstant.primaryRed,
+              ColorConstant.redFF2,
             ),
           ),
         ),
@@ -37,7 +35,7 @@ class ProgressDialogUtils {
               child: CircularProgressIndicator.adaptive(
                 strokeWidth: 4,
                 valueColor: AlwaysStoppedAnimation<Color>(
-                  ColorConstant.primaryRed,
+                  ColorConstant.redFF2,
                 ),
               ),
             ),
@@ -60,7 +58,7 @@ class ProgressDialogUtils {
     Get.snackbar(headerText, bodyText,
         snackPosition: SnackPosition.BOTTOM,
         colorText: ColorConstant.primaryBlack,
-        backgroundColor: ColorConstant.lightOrangeOutline,
+        backgroundColor: ColorConstant.primaryBlue,
         margin: const EdgeInsets.only(bottom: 26, left: 16, right: 16));
   }
 }

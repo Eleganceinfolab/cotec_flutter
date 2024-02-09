@@ -19,6 +19,14 @@ class CommonAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      systemOverlayStyle: SystemUiOverlayStyle(
+        // Status bar color
+        statusBarColor: ColorConstant.primaryBlue,
+
+        // Status bar brightness (optional)
+        statusBarIconBrightness: Brightness.light, // For Android (dark icons)
+        statusBarBrightness: Brightness.light, // For iOS (dark icons)
+      ),
       backgroundColor: ColorConstant.primaryBlue,
       automaticallyImplyLeading: false,
       leading: hasBack

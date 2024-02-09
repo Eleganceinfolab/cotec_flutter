@@ -17,6 +17,7 @@ class AppElevatedButton extends StatelessWidget {
   final String? textIcon;
   final String? svgPath;
   final Color? borderColor;
+  final Color? svgColor;
 
   AppElevatedButton(
       {Key? key,
@@ -26,6 +27,7 @@ class AppElevatedButton extends StatelessWidget {
       this.textIcon,
       this.borderColor,
       this.fontWeight,
+      this.svgColor,
       this.fontSize,
       this.buttonColor,
       this.radius,
@@ -47,7 +49,8 @@ class AppElevatedButton extends StatelessWidget {
           border: hasGradient ?? false
               ? null
               : Border.all(
-                  color: ColorConstant.primaryBlue, width: getHeight(1)),
+                  color: ColorConstant.textBlueToYellow(context),
+                  width: getHeight(1)),
           color: buttonColor ?? ColorConstant.primaryYellow,
           borderRadius: const BorderRadius.all(Radius.circular(50)),
         ),
@@ -73,6 +76,7 @@ class AppElevatedButton extends StatelessWidget {
                             padding: const EdgeInsets.only(right: 8.0),
                             child: CustomImageView(
                               svgPath: svgPath,
+                              color: svgColor ?? null,
                             ),
                           )
                         : const SizedBox(),

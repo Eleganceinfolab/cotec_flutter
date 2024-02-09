@@ -8,7 +8,7 @@ class LogListScreen extends GetWidget<LogListScreenController> {
   Widget build(BuildContext context) {
     sizeCalculate(context);
     return Scaffold(
-        backgroundColor: ColorConstant.backGroundColor,
+        backgroundColor: ColorConstant.backgroundColor(context),
         appBar: const CommonAppbar(title: AppString.logs),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,9 +43,12 @@ class LogListScreen extends GetWidget<LogListScreenController> {
                             child: AppElevatedButton(
                               showTextIcon: true,
                               svgPath: ImageConstant.download,
-                              buttonColor: ColorConstant.primaryBlue,
+                              textColor: ColorConstant.yellowToBlack(context),
+                              buttonColor:
+                                  ColorConstant.textBlueToYellow(context),
                               buttonName: AppString.download,
-                              textColor: ColorConstant.primaryYellow,
+                              svgColor: ColorConstant.yellowToBlack(context),
+                              // textColor: ColorConstant.primaryYellow,
                               onPressed: () {},
                             ),
                           ),
@@ -87,7 +90,7 @@ class LogListScreen extends GetWidget<LogListScreenController> {
                         AppString.selectAll,
                         style: CTC.style(18,
                             fontWeight: FontWeight.w600,
-                            fontColor: Colors.black),
+                            fontColor: ColorConstant.text00ToWhite(context)),
                       ),
                     ],
                   ),
@@ -110,6 +113,7 @@ class LogListScreen extends GetWidget<LogListScreenController> {
                           Get.toNamed(AppRoutes.logDetailsScreenRoute);
                         },
                         child: listItem(
+                          context: context,
                           item: data,
                           isSelecteds: (bool value) {
                             if (value) {
@@ -141,6 +145,7 @@ class LogListScreen extends GetWidget<LogListScreenController> {
   Widget listItem({
     required Item item,
     required ValueChanged<bool> isSelecteds,
+    required BuildContext context,
   }) {
     RxBool isSelected = false.obs;
 
@@ -155,12 +160,15 @@ class LogListScreen extends GetWidget<LogListScreenController> {
             decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
-                      color: Colors.grey.withOpacity(0.3),
+                      color: Colors.grey.withOpacity(
+                          Theme.of(context).brightness == Brightness.light
+                              ? 0.3
+                              : 0),
                       blurRadius: 5.0,
                       spreadRadius: 0.5),
                 ],
                 borderRadius: BorderRadius.circular(20),
-                color: ColorConstant.primaryWhite),
+                color: ColorConstant.containerBackGround(context)),
             padding: EdgeInsets.only(right: getWidth(12), top: getHeight(10)),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -198,31 +206,35 @@ class LogListScreen extends GetWidget<LogListScreenController> {
                             'From B Number',
                             style: CTC.style(18,
                                 fontWeight: FontWeight.w600,
-                                fontColor: ColorConstant.grey4c4c),
+                                fontColor:
+                                    ColorConstant.textGrey4c4cToWhite(context)),
                           ),
                           SizedBox(
                             height: getHeight(10),
                           ),
-                          Text(
-                            item.name,
-                            style: CTC.style(16,
-                                fontColor: ColorConstant.grey4c4c),
-                          ),
+                          Text(item.name,
+                              style: CTC.style(
+                                16,
+                                fontColor:
+                                    ColorConstant.textGrey4c4cToWhite(context),
+                              )),
                           SizedBox(
                             height: getHeight(10),
                           ),
-                          Text(
-                            item.date,
-                            style: CTC.style(16,
-                                fontColor: ColorConstant.grey4c4c),
-                          ),
+                          Text(item.date,
+                              style: CTC.style(
+                                16,
+                                fontColor:
+                                    ColorConstant.textGrey4c4cToWhite(context),
+                              )),
                           SizedBox(
                             height: getHeight(10),
                           ),
                           Text(
                             item.type,
                             style: CTC.style(16,
-                                fontColor: ColorConstant.grey4c4c),
+                                fontColor:
+                                    ColorConstant.textGrey4c4cToWhite(context)),
                           ),
                           SizedBox(
                             height: getHeight(20),
@@ -237,7 +249,7 @@ class LogListScreen extends GetWidget<LogListScreenController> {
                   child: Icon(
                     Icons.arrow_forward_ios_rounded,
                     size: getHeight(15),
-                    color: ColorConstant.grey4c4c,
+                    color: ColorConstant.textGrey4c4cToWhite(context),
                   ),
                 )
               ],

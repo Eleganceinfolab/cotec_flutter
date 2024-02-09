@@ -85,7 +85,7 @@ class HomeScreenController extends GetxController {
       context: context,
       builder: (BuildContext context) => LayoutBuilder(
         builder: (context, constraints) => SimpleDialog(
-          backgroundColor: ColorConstant.primaryWhite,
+          backgroundColor: ColorConstant.containerBackGround(context),
           surfaceTintColor: Colors.transparent,
           insetPadding: EdgeInsets.symmetric(horizontal: getWidth(20)),
           contentPadding: EdgeInsets.symmetric(
@@ -93,7 +93,9 @@ class HomeScreenController extends GetxController {
           children: [
             Text(
               AppString.deviceList,
-              style: CTC.style(26, fontWeight: FontWeight.w600),
+              style: CTC.style(26,
+                  fontWeight: FontWeight.w600,
+                  fontColor: ColorConstant.textBlackToYellow(context)),
             ),
             SizedBox(
               height: getHeight(10),
@@ -125,10 +127,11 @@ class HomeScreenController extends GetxController {
                             horizontal: getWidth(20), vertical: getHeight(7)),
                         child: Text(
                           deviceList[index],
-                          style: CTC.style(
-                            21,
-                            fontWeight: FontWeight.w500,
-                          ),
+                          style: CTC.style(21,
+                              fontWeight: FontWeight.w500,
+                              fontColor: selectedDevice.value == index
+                                  ? ColorConstant.textBlack
+                                  : ColorConstant.textBlackToWhite(context)),
                         ),
                       ),
                     ),
@@ -161,7 +164,9 @@ class HomeScreenController extends GetxController {
             Center(
               child: Text(
                 AppString.confirmLicenseKey,
-                style: CTC.style(26, fontWeight: FontWeight.w600),
+                style: CTC.style(26,
+                    fontWeight: FontWeight.w600,
+                    fontColor: ColorConstant.textBlackToYellow(context)),
               ),
             ),
             SizedBox(
@@ -170,7 +175,9 @@ class HomeScreenController extends GetxController {
             Center(
               child: Text(
                 AppString.enterLicenseKey,
-                style: CTC.style(16, fontColor: ColorConstant.grey4c4c),
+                textAlign: TextAlign.center,
+                style: CTC.style(16,
+                    fontColor: ColorConstant.textGrey4c4cToWhite(context)),
               ),
             ),
             SizedBox(
@@ -179,7 +186,8 @@ class HomeScreenController extends GetxController {
             Text(
               AppString.licenseKey,
               style: CTC.style(16,
-                  fontColor: ColorConstant.text00, fontWeight: FontWeight.w500),
+                  fontColor: ColorConstant.text00ToWhite(context),
+                  fontWeight: FontWeight.w500),
             ),
             SizedBox(
               height: getHeight(8),
@@ -191,7 +199,10 @@ class HomeScreenController extends GetxController {
               hintFontStyle: CTC.style(16,
                   fontWeight: FontWeight.w500,
                   fontColor: ColorConstant.grey9DA),
-            )
+            ),
+            SizedBox(
+              height: getHeight(15),
+            ),
           ],
         ),
         firstButtonTitle: AppString.confirm,
@@ -215,7 +226,9 @@ class HomeScreenController extends GetxController {
             Center(
               child: Text(
                 AppString.enterPin,
-                style: CTC.style(21, fontWeight: FontWeight.w600),
+                style: CTC.style(21,
+                    fontWeight: FontWeight.w600,
+                    fontColor: ColorConstant.textBlackToYellow(context)),
               ),
             ),
             SizedBox(
@@ -224,7 +237,9 @@ class HomeScreenController extends GetxController {
             Center(
               child: Text(
                 AppString.enterPinSettingText,
-                style: CTC.style(16),
+                textAlign: TextAlign.center,
+                style: CTC.style(16,
+                    fontColor: ColorConstant.textBlackToWhite(context)),
               ),
             ),
             SizedBox(
@@ -232,7 +247,9 @@ class HomeScreenController extends GetxController {
             ),
             Text(
               AppString.securityPin,
-              style: CTC.style(14, fontWeight: FontWeight.w500),
+              style: CTC.style(14,
+                  fontWeight: FontWeight.w500,
+                  fontColor: ColorConstant.textBlackToWhite(context)),
             ),
             SizedBox(
               height: getHeight(8),
@@ -245,11 +262,15 @@ class HomeScreenController extends GetxController {
               hintFontStyle: CTC.style(16,
                   fontWeight: FontWeight.w500,
                   fontColor: ColorConstant.grey9DA),
-            )
+            ),
+            SizedBox(
+              height: getHeight(8),
+            ),
           ],
         ),
         firstButtonTitle: AppString.submit,
         firstOnPressed: () {
+          Get.back();
           Get.toNamed(AppRoutes.settingScreenRoute);
         },
         context: context);
@@ -265,7 +286,7 @@ class HomeScreenController extends GetxController {
                 AppString.reachingLogsLimit,
                 style: CTC.style(21,
                     fontWeight: FontWeight.w600,
-                    fontColor: ColorConstant.text00),
+                    fontColor: ColorConstant.text00ToYellow(context)),
               ),
             ),
             SizedBox(
@@ -275,7 +296,8 @@ class HomeScreenController extends GetxController {
               child: Text(
                 AppString.reachingLogsLimitDes,
                 textAlign: TextAlign.center,
-                style: CTC.style(16, fontColor: ColorConstant.grey4c4c),
+                style: CTC.style(16,
+                    fontColor: ColorConstant.textGrey4c4cToWhite(context)),
               ),
             ),
             SizedBox(
@@ -300,7 +322,7 @@ class HomeScreenController extends GetxController {
                 AppString.reachingLogsLimitReached,
                 style: CTC.style(21,
                     fontWeight: FontWeight.w600,
-                    fontColor: ColorConstant.text00),
+                    fontColor: ColorConstant.text00ToYellow(context)),
               ),
             ),
             SizedBox(
@@ -310,7 +332,8 @@ class HomeScreenController extends GetxController {
               child: Text(
                 AppString.reachingLogsLimitReachedDes,
                 textAlign: TextAlign.center,
-                style: CTC.style(16, fontColor: ColorConstant.grey4c4c),
+                style: CTC.style(16,
+                    fontColor: ColorConstant.textGrey4c4cToWhite(context)),
               ),
             ),
             SizedBox(

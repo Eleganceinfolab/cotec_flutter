@@ -10,7 +10,7 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
   Widget build(BuildContext context) {
     sizeCalculate(context);
     return Scaffold(
-        backgroundColor: ColorConstant.backGroundColor,
+        backgroundColor: ColorConstant.backgroundColor(context),
         appBar: const CommonAppbar(title: AppString.activeTest),
         body: SingleChildScrollView(
           child: Padding(
@@ -24,98 +24,109 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                   decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                            color: Colors.grey.withOpacity(0.3),
+                            color: Colors.grey.withOpacity(
+                                Theme.of(context).brightness == Brightness.light
+                                    ? 0.3
+                                    : 0.0),
                             blurRadius: 5.0,
                             spreadRadius: 0.5),
                       ],
                       borderRadius: BorderRadius.circular(15),
-                      color: ColorConstant.primaryWhite),
+                      color: ColorConstant.containerBackGround(context)),
                   padding: EdgeInsets.symmetric(
                       horizontal: getWidth(10), vertical: getHeight(20)),
                   child: Column(
                     children: [
                       Obx(() => !controller.hasMeterView.value
-                          ? SfRadialGauge(
-                              // enableLoadingAnimation: true,
-                              animationDuration: 4500,
-                              axes: <RadialAxis>[
-                                  RadialAxis(
-                                    minimum: 0,
-                                    interval:
-                                        controller.voltMeterData.value.interval,
-                                    axisLineStyle: const AxisLineStyle(
-                                        color: Colors.transparent,
-                                        thickness: 20),
-                                    maximum:
-                                        controller.voltMeterData.value.maximum,
-                                    ranges: <GaugeRange>[
-                                      GaugeRange(
-                                        startValue: 0,
-                                        endValue: controller
-                                            .voltMeterData.value.endValue,
-                                        color: ColorConstant.primaryGreen,
-                                        endWidth: 25,
-                                        startWidth: 25,
-                                      ),
-                                      // GaugeRange(startValue: 50, endValue: 100, color: Colors.orange),
-                                      // GaugeRange(startValue: 100, endValue: 150, color: Colors.red)
-                                    ],
-                                    tickOffset: 10,
-                                    minorTickStyle: const MinorTickStyle(
-                                        length: 8,
-                                        thickness: 3,
-                                        color: Colors.black),
-                                    majorTickStyle: const MajorTickStyle(
-                                        length: 12,
-                                        thickness: 5,
-                                        color: Colors.black),
-                                    axisLabelStyle: const GaugeTextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18),
-                                    pointers: <GaugePointer>[
-                                      NeedlePointer(
-                                        needleEndWidth: 11,
-                                        needleStartWidth: 0,
-                                        value: controller
-                                            .voltMeterData.value.value,
-                                        needleColor: ColorConstant.redF95,
-                                        knobStyle: const KnobStyle(
-                                            color: ColorConstant.greyE6E6,
-                                            knobRadius: 0.12),
-                                        // value: double.parse(randomValues.toString()),
-                                        animationDuration: 3000,
-                                        animationType: AnimationType.elasticOut,
-                                        enableAnimation: true,
-                                        needleLength: 0.8,
-                                      )
-                                    ],
-                                    annotations: <GaugeAnnotation>[
-                                      GaugeAnnotation(
-                                          widget: Text(
-                                            controller.voltMeterData.value
-                                                        .value ==
-                                                    0.0
-                                                ? '0\nV'
-                                                : '${controller.voltMeterData.value.value.toStringAsFixed(2)}\n${controller.voltMeterData.value.voltage}',
-                                            key: ValueKey(controller
-                                                .voltMeterData.value
-                                                .toString()),
-                                            textAlign: TextAlign.center,
-                                            style: CTC.style(44,
-                                                fontColor:
-                                                    ColorConstant.grey4c4c,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                          angle: 90,
-                                          positionFactor: 0.7)
-                                    ],
-                                  )
-                                ])
+                          ? ClipRRect(
+                              borderRadius: BorderRadius.circular(250),
+                              child: SfRadialGauge(
+                                  // enableLoadingAnimation: true,
+                                  backgroundColor: ColorConstant.primaryWhite,
+                                  animationDuration: 4500,
+                                  axes: <RadialAxis>[
+                                    RadialAxis(
+                                      minimum: 0,
+                                      interval: controller
+                                          .voltMeterData.value.interval,
+                                      axisLineStyle: const AxisLineStyle(
+                                          color: Colors.transparent,
+                                          thickness: 15),
+                                      maximum: controller
+                                          .voltMeterData.value.maximum,
+                                      ranges: <GaugeRange>[
+                                        GaugeRange(
+                                          rangeOffset: 0,
+                                          startValue: 0,
+                                          endValue: controller
+                                              .voltMeterData.value.endValue,
+                                          color: ColorConstant.primaryGreen,
+                                          endWidth: 25,
+                                          startWidth: 25,
+                                        ),
+                                        // GaugeRange(startValue: 50, endValue: 100, color: Colors.orange),
+                                        // GaugeRange(startValue: 100, endValue: 150, color: Colors.red)
+                                      ],
+                                      tickOffset: 10,
+                                      minorTickStyle: const MinorTickStyle(
+                                          length: 8,
+                                          thickness: 3,
+                                          color: Colors.black),
+                                      majorTickStyle: const MajorTickStyle(
+                                          length: 12,
+                                          thickness: 5,
+                                          color: Colors.black),
+                                      axisLabelStyle: const GaugeTextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18,
+                                          color: Colors.black),
+                                      pointers: <GaugePointer>[
+                                        NeedlePointer(
+                                          needleEndWidth: 11,
+                                          needleStartWidth: 0,
+                                          value: controller
+                                              .voltMeterData.value.value,
+                                          needleColor: ColorConstant.redF95,
+                                          knobStyle: const KnobStyle(
+                                              color: ColorConstant.greyE6E6,
+                                              knobRadius: 0.12),
+                                          // value: double.parse(randomValues.toString()),
+                                          animationDuration: 3000,
+                                          animationType:
+                                              AnimationType.elasticOut,
+                                          enableAnimation: true,
+                                          needleLength: 0.8,
+                                        )
+                                      ],
+                                      annotations: <GaugeAnnotation>[
+                                        GaugeAnnotation(
+                                            widget: Text(
+                                              controller.voltMeterData.value
+                                                          .value ==
+                                                      0.0
+                                                  ? '0\nV'
+                                                  : '${controller.voltMeterData.value.value.toStringAsFixed(2)}\n${controller.voltMeterData.value.voltage}',
+                                              key: ValueKey(controller
+                                                  .voltMeterData.value
+                                                  .toString()),
+                                              textAlign: TextAlign.center,
+                                              style: CTC.style(44,
+                                                  fontColor:
+                                                      ColorConstant.grey4c4c,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            angle: 90,
+                                            positionFactor: 0.7)
+                                      ],
+                                    )
+                                  ]),
+                            )
                           : Container(
                               margin: EdgeInsets.only(
                                   bottom: getHeight(30), top: getHeight(30)),
                               decoration: BoxDecoration(
-                                  color: ColorConstant.primaryWhite,
+                                  color: ColorConstant.containerBackGround(
+                                      context),
                                   border: Border.all(
                                       color: ColorConstant.redFF2, width: 3),
                                   borderRadius: BorderRadius.circular(25)),
@@ -154,6 +165,7 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                             children: [
                               CustomImageView(
                                 svgPath: ImageConstant.manVoice,
+                                color: ColorConstant.textDarkTOLight(context),
                               ),
                               SizedBox(
                                 width: getWidth(5),
@@ -175,8 +187,10 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                             children: [
                               Text(
                                 AppString.meterView,
-                                style:
-                                    CTC.style(12, fontWeight: FontWeight.w600),
+                                style: CTC.style(12,
+                                    fontWeight: FontWeight.w600,
+                                    fontColor: ColorConstant.textBlackToWhite(
+                                        context)),
                               ),
                               SizedBox(
                                 width: getWidth(5),
@@ -203,12 +217,21 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                         decoration: BoxDecoration(
                             boxShadow: [
                               BoxShadow(
-                                  color: Colors.grey.withOpacity(0.2),
+                                  color: Colors.grey.withOpacity(
+                                      Theme.of(context).brightness ==
+                                              Brightness.light
+                                          ? 0.2
+                                          : 0),
                                   blurRadius: 5.0,
                                   spreadRadius: 0.5),
                             ],
+                            border: Border.all(
+                                color: Theme.of(context).brightness ==
+                                        Brightness.light
+                                    ? ColorConstant.transparent
+                                    : Colors.grey),
                             borderRadius: BorderRadius.circular(15),
-                            color: ColorConstant.primaryWhite),
+                            color: ColorConstant.containerBackGround(context)),
                         padding: EdgeInsets.symmetric(
                             horizontal: getWidth(18), vertical: getHeight(15)),
                         child: Row(
@@ -227,7 +250,8 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                   AppString.link,
                                   style: CTC.style(15,
                                       fontWeight: FontWeight.w500,
-                                      fontColor: ColorConstant.text00),
+                                      fontColor:
+                                          ColorConstant.text00ToWhite(context)),
                                 )
                               ],
                             ),
@@ -244,7 +268,8 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                   AppString.gps,
                                   style: CTC.style(15,
                                       fontWeight: FontWeight.w500,
-                                      fontColor: ColorConstant.text00),
+                                      fontColor:
+                                          ColorConstant.text00ToWhite(context)),
                                 )
                               ],
                             ),
@@ -261,7 +286,8 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                   AppString.status,
                                   style: CTC.style(15,
                                       fontWeight: FontWeight.w500,
-                                      fontColor: ColorConstant.text00),
+                                      fontColor:
+                                          ColorConstant.text00ToWhite(context)),
                                 )
                               ],
                             ),
@@ -354,12 +380,15 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                   decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                            color: Colors.grey.withOpacity(0.3),
+                            color: Colors.grey.withOpacity(
+                                Theme.of(context).brightness == Brightness.light
+                                    ? 0.3
+                                    : 0),
                             blurRadius: 5.0,
                             spreadRadius: 0.5),
                       ],
                       borderRadius: BorderRadius.circular(15),
-                      color: ColorConstant.primaryWhite),
+                      color: ColorConstant.containerBackGround(context)),
                   padding: EdgeInsets.symmetric(
                       horizontal: getWidth(18), vertical: getHeight(20)),
                   child: Column(
@@ -372,7 +401,9 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                               AppString.testTypes,
                               style: CTC.style(14,
                                   fontWeight: FontWeight.w600,
-                                  fontColor: ColorConstant.primaryBlack),
+                                  fontColor:
+                                      ColorConstant.textPrimaryBlackToWhite(
+                                          context)),
                             ),
                           ),
                           Expanded(
@@ -380,7 +411,9 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                               'Isolation Pre-Test - Energised',
                               style: CTC.style(14,
                                   fontWeight: FontWeight.w500,
-                                  fontColor: ColorConstant.primaryBlack),
+                                  fontColor:
+                                      ColorConstant.textPrimaryBlackToWhite(
+                                          context)),
                             ),
                           ),
                         ],
@@ -388,13 +421,14 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                       SizedBox(
                         height: getHeight(5),
                       ),
-                      itemNameValue(AppString.fullName, 'James Hunt'),
-                      itemNameValue(AppString.ptsNumber, 'PTS123NUM'),
+                      itemNameValue(AppString.fullName, 'James Hunt', context),
+                      itemNameValue(AppString.ptsNumber, 'PTS123NUM', context),
+                      itemNameValue(AppString.companyName,
+                          'Company Name > Depot', context),
+                      itemNameValue(AppString.fromBNumber, 'FORMBNUM', context),
+                      itemNameValue(AppString.fromCNumber, 'FORMCNUM', context),
                       itemNameValue(
-                          AppString.companyName, 'Company Name > Depot'),
-                      itemNameValue(AppString.fromBNumber, 'FORMBNUM'),
-                      itemNameValue(AppString.fromCNumber, 'FORMCNUM'),
-                      itemNameValue(AppString.location, 'Location Name')
+                          AppString.location, 'Location Name', context)
                     ],
                   ),
                 ),
@@ -416,7 +450,7 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
         ));
   }
 
-  Widget itemNameValue(String title, String value) {
+  Widget itemNameValue(String title, String value, BuildContext context) {
     return Column(
       children: [
         Row(
@@ -427,7 +461,7 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                 '$title:',
                 style: CTC.style(14,
                     fontWeight: FontWeight.w600,
-                    fontColor: ColorConstant.primaryBlack),
+                    fontColor: ColorConstant.textPrimaryBlackToWhite(context)),
               ),
             ),
             Expanded(
@@ -435,7 +469,7 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                 value,
                 style: CTC.style(14,
                     fontWeight: FontWeight.w500,
-                    fontColor: ColorConstant.primaryBlack),
+                    fontColor: ColorConstant.textPrimaryBlackToWhite(context)),
               ),
             ),
           ],
@@ -466,7 +500,7 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                 textAlign: TextAlign.center,
                 style: CTC.style(24,
                     fontWeight: FontWeight.w600,
-                    fontColor: ColorConstant.text00),
+                    fontColor: ColorConstant.text00ToYellow(context)),
               ),
             ),
             SizedBox(
@@ -476,7 +510,8 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
               child: Text(
                 AppString.warningDetectedDes,
                 textAlign: TextAlign.center,
-                style: CTC.style(14, fontColor: ColorConstant.grey4c4c),
+                style: CTC.style(14,
+                    fontColor: ColorConstant.textGrey4c4cToWhite(context)),
               ),
             ),
             SizedBox(
@@ -484,7 +519,7 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
             ),
           ],
         ),
-        firstButtonTitle: AppString.ok,
+        firstButtonTitle: AppString.acknowledge,
         firstOnPressed: () {
           Get.back();
         },

@@ -60,6 +60,7 @@ class AppString {
   static const String disconnect = "Disconnect";
   static const String confirmLicense = "Confirm License";
   static const String ok = "OK";
+  static const String acknowledge = "Acknowledge";
   static const String changePin = "Change Pin";
   static const String setCompanyName = "Set Company Name";
   static const String clearAppData = "Clear APP Data";

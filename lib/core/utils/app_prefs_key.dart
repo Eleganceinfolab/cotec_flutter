@@ -1,6 +1,6 @@
 /// [PrefsKey] contains key names which have been used to store data
 /// with [Hive]
 
-abstract class PrefsKey {
-  // static const String user = '@lmg_user';
+abstract class HiveKey {
+  static const String isDarkMode = 'is_dark';
 }

@@ -12,7 +12,7 @@ class HomeScreen extends GetWidget<HomeScreenController> {
   Widget build(BuildContext context) {
     sizeCalculate(context);
     return Scaffold(
-        backgroundColor: ColorConstant.backGroundColor,
+        backgroundColor: ColorConstant.backgroundColor(context),
         appBar: const CommonAppbar(hasBack: false),
         body: SingleChildScrollView(
           child: Padding(
@@ -101,6 +101,7 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                   style: CTC.style(
                     16,
                     fontWeight: FontWeight.w600,
+                    fontColor: ColorConstant.textBlackToWhite(context),
                   ),
                 ),
                 SizedBox(

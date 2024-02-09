@@ -11,7 +11,7 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
   Widget build(BuildContext context) {
     sizeCalculate(context);
     return Scaffold(
-        backgroundColor: ColorConstant.backGroundColor,
+        backgroundColor: ColorConstant.backgroundColor(context),
         appBar: CommonAppbar(
           title: AppString.test,
         ),
@@ -31,7 +31,7 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
                             fontWeight: FontWeight.w500,
                             fontColor: controller.testTypeValidate.value
                                 ? ColorConstant.textRedFF
-                                : ColorConstant.text00),
+                                : ColorConstant.text00ToWhite(context)),
                       ),
                       if (controller.testTypeValidate.value)
                         Text(
@@ -62,7 +62,9 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
                                 item,
                                 style: CTC.style(16,
                                     fontWeight: FontWeight.w500,
-                                    fontColor: ColorConstant.grey4c4c),
+                                    fontColor:
+                                        ColorConstant.textGrey4c4cToWhite(
+                                            context)),
                                 overflow: TextOverflow.ellipsis,
                               ),
                             ))
@@ -86,32 +88,36 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
                             color: controller.testTypeValidate.value
                                 ? ColorConstant.textRedFF
                                 : ColorConstant.transparent),
-                        color: ColorConstant.primaryWhite,
+                        color: ColorConstant.containerBackGround(context),
                       ),
                     ),
 
-                    iconStyleData: const IconStyleData(
+                    iconStyleData: IconStyleData(
                       icon: Icon(
                         Icons.keyboard_arrow_down_rounded,
                       ),
                       iconSize: 24,
-                      iconEnabledColor: ColorConstant.primaryBlack,
+                      iconEnabledColor: controller.testTypeValidate.value
+                          ? ColorConstant.textRedFF
+                          : ColorConstant.text00ToWhite(context),
                     ),
                     isDense: true,
                     dropdownStyleData: DropdownStyleData(
                       maxHeight: 200,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(14),
-                        color: ColorConstant.primaryWhite,
+                        color: ColorConstant.containerBackGround(context),
                       ),
                     ),
                     menuItemStyleData: const MenuItemStyleData(
                       height: 40,
                       padding: EdgeInsets.only(left: 14, right: 14),
                     ),
-                    style: CTC.style(14),
+                    style: CTC.style(14,
+                        fontColor: ColorConstant.textBlackToWhite(context)),
                   ),
                   titleText(
+                      context: context,
                       title: AppString.name,
                       hintText: AppString.enterHere,
                       isValidate: !controller.nameValidate.value,
@@ -122,6 +128,7 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
                       },
                       textController: controller.nameController),
                   titleText(
+                      context: context,
                       title: AppString.ptsNumber,
                       hintText: AppString.enterPTSNumber,
                       isValidate: !controller.ptsValidate.value,
@@ -132,10 +139,11 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
                       },
                       textController: controller.ptsNumberController),
                   titleText(
+                      context: context,
                       title: AppString.companyName,
                       hintText: AppString.johnCompany,
                       isValidate: !controller.companyValidate.value,
-                      fillColor: ColorConstant.greyE2E2,
+                      fillColor: ColorConstant.backgroundTextField(context),
                       onChanged: (p0) {
                         if (p0.isNotEmpty) {
                           controller.companyValidate.value = false;
@@ -143,6 +151,7 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
                       },
                       textController: controller.companyNameController),
                   titleText(
+                      context: context,
                       title: AppString.fromBNumber,
                       hintText: AppString.enterBNumber,
                       isValidate: !controller.bNumberValidate.value,
@@ -153,6 +162,7 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
                       },
                       textController: controller.bNumberController),
                   titleText(
+                      context: context,
                       title: AppString.fromCNumber,
                       hintText: AppString.enterCNumber,
                       isValidate: !controller.cNumberValidate.value,
@@ -163,6 +173,7 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
                       },
                       textController: controller.cNumberController),
                   titleText(
+                      context: context,
                       title: AppString.location,
                       hintText: AppString.enterLocation,
                       onChanged: (p0) {
@@ -206,6 +217,7 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
   Widget titleText(
       {required String title,
       required bool isValidate,
+      required BuildContext context,
       required Function(String) onChanged,
       Color? fillColor,
       required TextEditingController textController,
@@ -221,7 +233,7 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
                   fontWeight: FontWeight.w500,
                   fontColor: !isValidate
                       ? ColorConstant.textRedFF
-                      : ColorConstant.text00),
+                      : ColorConstant.text00ToWhite(context)),
             ),
             if (!isValidate)
               Text(
@@ -240,9 +252,10 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
             controller: textController,
             hintText: hintText,
             onChanged: onChanged,
-            fillColor: fillColor ?? ColorConstant.primaryWhite,
+            fillColor: fillColor ?? ColorConstant.containerBackGround(context),
             fontStyle: CTC.style(16,
-                fontWeight: FontWeight.w500, fontColor: ColorConstant.grey4c4c),
+                fontWeight: FontWeight.w500,
+                fontColor: ColorConstant.textGrey4c4cToWhite(context)),
             hintFontStyle: CTC.style(16, fontColor: ColorConstant.grey9DA),
             borderColor: !isValidate
                 ? ColorConstant.textRedFF

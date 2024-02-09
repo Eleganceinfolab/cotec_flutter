@@ -10,7 +10,7 @@ class GetStartScreen extends GetWidget<GetStartScreenController> {
   Widget build(BuildContext context) {
     sizeCalculate(context);
     return Scaffold(
-        backgroundColor: ColorConstant.backGroundColor,
+        backgroundColor: ColorConstant.backgroundColor(context),
         appBar: const CommonAppbar(title: AppString.getStart, hasBack: false),
         body: Column(
           children: [

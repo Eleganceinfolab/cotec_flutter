@@ -10,7 +10,7 @@ class LogDetailsScreen extends GetWidget<LogDetailsScreenController> {
   Widget build(BuildContext context) {
     sizeCalculate(context);
     return Scaffold(
-        backgroundColor: ColorConstant.backGroundColor,
+        backgroundColor: ColorConstant.backgroundColor(context),
         appBar: const CommonAppbar(title: '202310050'),
         body: SingleChildScrollView(
           child: Padding(
@@ -25,12 +25,15 @@ class LogDetailsScreen extends GetWidget<LogDetailsScreenController> {
                   decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                            color: Colors.grey.withOpacity(0.3),
+                            color: Colors.grey.withOpacity(
+                                Theme.of(context).brightness == Brightness.light
+                                    ? 0.3
+                                    : 0),
                             blurRadius: 5.0,
                             spreadRadius: 0.5),
                       ],
                       borderRadius: BorderRadius.circular(15),
-                      color: ColorConstant.primaryWhite),
+                      color: ColorConstant.containerBackGround(context)),
                   padding: EdgeInsets.symmetric(
                       horizontal: getWidth(18), vertical: getHeight(20)),
                   child: Row(
@@ -40,13 +43,13 @@ class LogDetailsScreen extends GetWidget<LogDetailsScreenController> {
                         AppString.logNumber,
                         style: CTC.style(16,
                             fontWeight: FontWeight.bold,
-                            fontColor: ColorConstant.primaryBlue),
+                            fontColor: ColorConstant.textDarkTOLight(context)),
                       ),
                       Text(
                         '202310050',
                         style: CTC.style(16,
                             fontWeight: FontWeight.w500,
-                            fontColor: ColorConstant.primaryBlue),
+                            fontColor: ColorConstant.textDarkTOLight(context)),
                       ),
                     ],
                   ),
@@ -58,12 +61,15 @@ class LogDetailsScreen extends GetWidget<LogDetailsScreenController> {
                   decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                            color: Colors.grey.withOpacity(0.3),
+                            color: Colors.grey.withOpacity(
+                                Theme.of(context).brightness == Brightness.light
+                                    ? 0.3
+                                    : 0),
                             blurRadius: 5.0,
                             spreadRadius: 0.5),
                       ],
                       borderRadius: BorderRadius.circular(15),
-                      color: ColorConstant.primaryWhite),
+                      color: ColorConstant.containerBackGround(context)),
                   padding: EdgeInsets.symmetric(
                       horizontal: getWidth(18), vertical: getHeight(20)),
                   child: Column(
@@ -76,7 +82,8 @@ class LogDetailsScreen extends GetWidget<LogDetailsScreenController> {
                               AppString.testTypes,
                               style: CTC.style(14,
                                   fontWeight: FontWeight.w600,
-                                  fontColor: ColorConstant.primaryBlue),
+                                  fontColor:
+                                      ColorConstant.textDarkTOLight(context)),
                             ),
                           ),
                           Expanded(
@@ -84,7 +91,8 @@ class LogDetailsScreen extends GetWidget<LogDetailsScreenController> {
                               'Isolation Pre-Test - Energised',
                               style: CTC.style(14,
                                   fontWeight: FontWeight.w500,
-                                  fontColor: ColorConstant.primaryBlue),
+                                  fontColor:
+                                      ColorConstant.textDarkTOLight(context)),
                             ),
                           ),
                         ],
@@ -92,13 +100,14 @@ class LogDetailsScreen extends GetWidget<LogDetailsScreenController> {
                       SizedBox(
                         height: getHeight(5),
                       ),
-                      itemNameValue(AppString.fullName, 'James Hunt'),
-                      itemNameValue(AppString.ptsNumber, 'PTS123NUM'),
+                      itemNameValue(AppString.fullName, 'James Hunt', context),
+                      itemNameValue(AppString.ptsNumber, 'PTS123NUM', context),
+                      itemNameValue(AppString.companyName,
+                          'Company Name > Depot', context),
+                      itemNameValue(AppString.fromBNumber, 'FORMBNUM', context),
+                      itemNameValue(AppString.fromCNumber, 'FORMCNUM', context),
                       itemNameValue(
-                          AppString.companyName, 'Company Name > Depot'),
-                      itemNameValue(AppString.fromBNumber, 'FORMBNUM'),
-                      itemNameValue(AppString.fromCNumber, 'FORMCNUM'),
-                      itemNameValue(AppString.location, 'Location Name')
+                          AppString.location, 'Location Name', context)
                     ],
                   ),
                 ),
@@ -112,13 +121,13 @@ class LogDetailsScreen extends GetWidget<LogDetailsScreenController> {
                       AppString.gpsLocation,
                       style: CTC.style(16,
                           fontWeight: FontWeight.bold,
-                          fontColor: ColorConstant.primaryBlue),
+                          fontColor: ColorConstant.textDarkTOLight(context)),
                     ),
                     Text(
                       '40.748440, -73.984559',
                       style: CTC.style(16,
                           fontWeight: FontWeight.w500,
-                          fontColor: ColorConstant.primaryBlue),
+                          fontColor: ColorConstant.textDarkTOLight(context)),
                     ),
                   ],
                 ),
@@ -132,13 +141,13 @@ class LogDetailsScreen extends GetWidget<LogDetailsScreenController> {
                       AppString.statusMessage,
                       style: CTC.style(16,
                           fontWeight: FontWeight.bold,
-                          fontColor: ColorConstant.primaryBlue),
+                          fontColor: ColorConstant.textDarkTOLight(context)),
                     ),
                     Text(
                       'Low Battery. Please recharge the device at the earliest opportunity.',
                       style: CTC.style(16,
                           fontWeight: FontWeight.w500,
-                          fontColor: ColorConstant.primaryBlue),
+                          fontColor: ColorConstant.textDarkTOLight(context)),
                     ),
                   ],
                 ),
@@ -152,13 +161,13 @@ class LogDetailsScreen extends GetWidget<LogDetailsScreenController> {
                       AppString.deviceNumber,
                       style: CTC.style(16,
                           fontWeight: FontWeight.bold,
-                          fontColor: ColorConstant.primaryBlue),
+                          fontColor: ColorConstant.textDarkTOLight(context)),
                     ),
                     Text(
                       'C31e-XXXXX',
                       style: CTC.style(16,
                           fontWeight: FontWeight.w500,
-                          fontColor: ColorConstant.primaryBlue),
+                          fontColor: ColorConstant.textDarkTOLight(context)),
                     ),
                   ],
                 ),
@@ -169,31 +178,36 @@ class LogDetailsScreen extends GetWidget<LogDetailsScreenController> {
                   decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                            color: Colors.grey.withOpacity(0.3),
+                            color: Colors.grey.withOpacity(
+                                Theme.of(context).brightness == Brightness.light
+                                    ? 0.3
+                                    : 0),
                             blurRadius: 5.0,
                             spreadRadius: 0.5),
                       ],
                       borderRadius: BorderRadius.circular(15),
-                      color: ColorConstant.primaryWhite),
+                      color: ColorConstant.containerBackGround(context)),
                   padding: EdgeInsets.symmetric(
                       horizontal: getWidth(18), vertical: getHeight(20)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      itemNameValue(AppString.startUp, '09:18 AM',
+                      itemNameValue(AppString.startUp, '09:18 AM', context,
                           isSize: true),
-                      itemNameValue(AppString.voltsDetected, '09:20 AM',
+                      itemNameValue(
+                          AppString.voltsDetected, '09:20 AM', context,
                           isSize: true),
-                      itemNameValue(AppString.duration, '3:17 Minutes',
+                      itemNameValue(AppString.duration, '3:17 Minutes', context,
                           isSize: true),
-                      itemNameValue(AppString.voltsHie, '3.98 kV',
+                      itemNameValue(AppString.voltsHie, '3.98 kV', context,
                           isSize: true),
-                      itemNameValue(AppString.voltLow, '2.09 kV', isSize: true),
+                      itemNameValue(AppString.voltLow, '2.09 kV', context,
+                          isSize: true),
                       Text(
                         AppString.notes,
                         style: CTC.style(14,
                             fontWeight: FontWeight.w600,
-                            fontColor: ColorConstant.primaryBlue),
+                            fontColor: ColorConstant.textDarkTOLight(context)),
                       ),
                       SizedBox(
                         height: getHeight(5),
@@ -203,7 +217,7 @@ class LogDetailsScreen extends GetWidget<LogDetailsScreenController> {
                         's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book',
                         style: CTC.style(12,
                             fontWeight: FontWeight.w500,
-                            fontColor: ColorConstant.primaryBlue),
+                            fontColor: ColorConstant.textDarkTOLight(context)),
                       ),
                     ],
                   ),
@@ -216,6 +230,7 @@ class LogDetailsScreen extends GetWidget<LogDetailsScreenController> {
                   onPressed: () {
                     CommonConstant.instance.commonShowDialogs(
                       child: dialogDownload(),
+                      backgroundColor: ColorConstant.primaryWhite,
                       context: context,
                       firstButtonTitle: AppString.cancel,
                       firstOnPressed: () {
@@ -229,8 +244,9 @@ class LogDetailsScreen extends GetWidget<LogDetailsScreenController> {
                 ),
                 AppElevatedButton(
                   hasGradient: false,
-                  buttonColor: ColorConstant.primaryWhite,
+                  buttonColor: ColorConstant.containerBackGround(context),
                   buttonName: AppString.shareLog,
+                  textColor: ColorConstant.textBlueToYellow(context),
                   onPressed: () {},
                 ),
                 SizedBox(
@@ -315,7 +331,8 @@ class LogDetailsScreen extends GetWidget<LogDetailsScreenController> {
     );
   }
 
-  Widget itemNameValue(String title, String value, {bool isSize = false}) {
+  Widget itemNameValue(String title, String value, BuildContext context,
+      {bool isSize = false}) {
     return Column(
       children: [
         Row(
@@ -326,7 +343,7 @@ class LogDetailsScreen extends GetWidget<LogDetailsScreenController> {
                 '$title:',
                 style: CTC.style(14,
                     fontWeight: FontWeight.w600,
-                    fontColor: ColorConstant.primaryBlue),
+                    fontColor: ColorConstant.textDarkTOLight(context)),
               ),
             ),
             Expanded(
@@ -334,7 +351,7 @@ class LogDetailsScreen extends GetWidget<LogDetailsScreenController> {
                 value,
                 style: CTC.style(14,
                     fontWeight: FontWeight.w500,
-                    fontColor: ColorConstant.primaryBlue),
+                    fontColor: ColorConstant.textDarkTOLight(context)),
               ),
             ),
           ],

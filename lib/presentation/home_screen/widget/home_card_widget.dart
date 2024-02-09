@@ -21,7 +21,7 @@ class HomeMenuCard extends StatelessWidget {
     return Bounce(
       onTap: onTap,
       child: Card(
-          color: ColorConstant.primaryWhite,
+          color: ColorConstant.containerBackGround(context),
           child: Container(
             width: double.infinity,
             padding: EdgeInsets.symmetric(
@@ -51,10 +51,16 @@ class HomeMenuCard extends StatelessWidget {
                   ),
                   if (!connected)
                     Text(homeMenu.title,
-                        style: CTC.style(18, fontWeight: FontWeight.w600)),
+                        style: CTC.style(18,
+                            fontWeight: FontWeight.w600,
+                            fontColor:
+                                ColorConstant.textBlackToWhite(context))),
                   if (connected)
                     Text(AppString.disconnect,
-                        style: CTC.style(18, fontWeight: FontWeight.w600)),
+                        style: CTC.style(18,
+                            fontWeight: FontWeight.w600,
+                            fontColor:
+                                ColorConstant.textBlackToWhite(context))),
                   if (connected && deviceName != null)
                     Text(deviceName ?? '',
                         style: CTC.style(18,
