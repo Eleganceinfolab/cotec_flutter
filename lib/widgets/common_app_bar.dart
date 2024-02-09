@@ -25,7 +25,8 @@ class CommonAppbar extends StatelessWidget implements PreferredSizeWidget {
 
         // Status bar brightness (optional)
         statusBarIconBrightness: Brightness.light, // For Android (dark icons)
-        statusBarBrightness: Brightness.light, // For iOS (dark icons)
+        statusBarBrightness: Brightness.dark, // For iOS (dark icons)
+
       ),
       backgroundColor: ColorConstant.primaryBlue,
       automaticallyImplyLeading: false,

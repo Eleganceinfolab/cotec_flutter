@@ -1,6 +1,4 @@
 import 'package:cotec/core/app_export.dart';
-import 'package:cotec/widgets/custom_app_text_form_field.dart';
-import 'package:cotec/widgets/custom_elavated_button.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'controller/log_test_screen_controller.dart';
 
@@ -192,7 +190,7 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
                           child: AppElevatedButton(
                         buttonName: AppString.clearAll,
                         onPressed: () {
-                          Get.back();
+                          controller.clearAll();
                         },
                       )),
                       SizedBox(
