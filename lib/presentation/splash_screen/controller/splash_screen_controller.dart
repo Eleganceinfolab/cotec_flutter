@@ -10,7 +10,7 @@ class SplashScreenController extends GetxController {
   }
 
   Future changeRoute() async {
-    Future.delayed(const Duration(milliseconds: 3000), () {
+    Future.delayed(const Duration(milliseconds: 4000), () {
       Get.offAllNamed(AppRoutes.getStartScreenRoute);
     });
   }

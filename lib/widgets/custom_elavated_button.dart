@@ -14,6 +14,7 @@ class AppElevatedButton extends StatelessWidget {
   final double? fontSize;
   final bool? showTextIcon;
   bool? hasGradient = true;
+  bool? hasBoxShadow;
   final String? textIcon;
   final String? svgPath;
   final Color? borderColor;
@@ -33,6 +34,7 @@ class AppElevatedButton extends StatelessWidget {
       this.radius,
       this.showTextIcon,
       this.hasGradient = true,
+      this.hasBoxShadow = false,
       this.isLoading = false,
       this.buttonShadowColor,
       this.svgPath})
@@ -51,6 +53,7 @@ class AppElevatedButton extends StatelessWidget {
               : Border.all(
                   color: ColorConstant.textBlueToYellow(context),
                   width: getHeight(1)),
+          boxShadow:hasBoxShadow??false? [BoxShadow(color: Colors.grey,offset: Offset(0.1, 3.5),blurRadius: 4)]:null,
           color: buttonColor ?? ColorConstant.primaryYellow,
           borderRadius: const BorderRadius.all(Radius.circular(50)),
         ),

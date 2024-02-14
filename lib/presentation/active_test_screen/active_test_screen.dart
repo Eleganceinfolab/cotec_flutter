@@ -42,7 +42,7 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                               borderRadius: BorderRadius.circular(getWidth(50)),
                               child: SfRadialGauge(
                                   // enableLoadingAnimation: true,
-                                  backgroundColor: ColorConstant.primaryWhite,
+                                  backgroundColor: ColorConstant.containerBackGround(context),
                                   animationDuration: 4500,
                                   axes: <RadialAxis>[
                                     RadialAxis(
@@ -68,18 +68,21 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                         // GaugeRange(startValue: 100, endValue: 150, color: Colors.red)
                                       ],
                                       tickOffset: 10,
-                                      minorTickStyle: const MinorTickStyle(
+                                      minorTickStyle: MinorTickStyle(
                                           length: 8,
                                           thickness: 3,
-                                          color: Colors.black),
-                                      majorTickStyle: const MajorTickStyle(
+                                          color: ColorConstant.text00ToWhite(
+                                              context)),
+                                      majorTickStyle: MajorTickStyle(
                                           length: 12,
                                           thickness: 5,
-                                          color: Colors.black),
-                                      axisLabelStyle: const GaugeTextStyle(
+                                          color: ColorConstant.text00ToWhite(
+                                              context)),
+                                      axisLabelStyle: GaugeTextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 18,
-                                          color: Colors.black),
+                                          color: ColorConstant.text00ToWhite(
+                                              context)),
                                       pointers: <GaugePointer>[
                                         NeedlePointer(
                                           needleEndWidth: 11,
@@ -91,9 +94,9 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                               color: ColorConstant.greyE6E6,
                                               knobRadius: 0.12),
                                           // value: double.parse(randomValues.toString()),
-                                          animationDuration: 3000,
+                                          animationDuration: 500,
                                           animationType:
-                                              AnimationType.elasticOut,
+                                              AnimationType.linear,
                                           enableAnimation: true,
                                           needleLength: 0.8,
                                         )
@@ -111,8 +114,9 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                                   .toString()),
                                               textAlign: TextAlign.center,
                                               style: CTC.style(44,
-                                                  fontColor:
-                                                      ColorConstant.grey4c4c,
+                                                  fontColor: ColorConstant
+                                                      .textGrey4c4cToWhite(
+                                                      context),
                                                   fontWeight: FontWeight.bold),
                                             ),
                                             angle: 90,

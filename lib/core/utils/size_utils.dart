@@ -15,7 +15,7 @@ double getWidth(double px) {
 }
 
 double getFontSize(double px) {
-  return (widths / 360) > 1.5 ? px * 1.5 : px * (widths / 360);
+  return (widths / 360) > 1.5 ? px * 1.5 : px * (widths / 340);
 }
 
 double getHeight(double px) {

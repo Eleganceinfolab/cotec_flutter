@@ -33,7 +33,7 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
                       ),
                       if (controller.testTypeValidate.value)
                         Text(
-                          ' - is Required',
+                          ' - is required',
                           style: CTC.style(16,
                               fontWeight: FontWeight.w500,
                               fontColor: ColorConstant.textRedFF),
@@ -237,7 +237,7 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
               Text(
                 AppString.isRequired,
                 style: CTC.style(16,
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w400,
                     fontColor: ColorConstant.textRedFF),
               ),
           ],

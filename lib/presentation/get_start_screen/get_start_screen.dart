@@ -11,7 +11,7 @@ class GetStartScreen extends GetWidget<GetStartScreenController> {
     sizeCalculate(context);
     return Scaffold(
         backgroundColor: ColorConstant.backgroundColor(context),
-        appBar: const CommonAppbar(title: AppString.getStart, hasBack: false),
+        appBar: const CommonAppbar(title: AppString.getStartedCamelCase, hasBack: false),
         body: Column(
           children: [
             Padding(
@@ -26,7 +26,8 @@ class GetStartScreen extends GetWidget<GetStartScreenController> {
               padding: EdgeInsets.symmetric(
                   vertical: getHeight(40), horizontal: getWidth(47)),
               child: AppElevatedButton(
-                buttonName: AppString.getStart,
+                hasBoxShadow: true,
+                buttonName: AppString.getStartedCamelCase,
                 onPressed: () {
                   Get.toNamed(AppRoutes.homeScreenRoute);
                 },

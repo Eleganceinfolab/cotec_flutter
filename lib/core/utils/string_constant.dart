@@ -1,5 +1,6 @@
 class AppString {
   static const String getStart = "Get Start";
+  static const String getStartedCamelCase = "Get Started";
   static const String logTest = "Log a Test";
   static const String measureVolts = "Measure Volts";
   static const String logs = "Logs";
@@ -28,8 +29,8 @@ class AppString {
   static const String gpsLocation = "GPS Location";
   static const String ptsNumber = "PTS Number";
   static const String companyName = "Company Name";
-  static const String fromBNumber = "From B Number";
-  static const String fromCNumber = "From C Number";
+  static const String fromBNumber = "Form B Number";
+  static const String fromCNumber = "Form C Number";
   static const String location = "Location";
   static const String enterPin = "Enter Pin";
   static const String duration = "Duration";
@@ -43,8 +44,8 @@ class AppString {
   static const String hide = "******";
   static const String enterPTSNumber = "Enter PTS Number";
   static const String johnCompany = "John's Company";
-  static const String enterBNumber = "Enter B Number";
-  static const String enterCNumber = "enter From C Number";
+  static const String enterBNumber = "Enter Form B Number";
+  static const String enterCNumber = "Enter Form C Number";
   static const String enterLocation = "Enter Location";
   static const String clearAll = "Clear All";
   static const String proceedToTest = "Proceed to Test";
@@ -73,7 +74,7 @@ class AppString {
   static const String searchHere = "Search here";
   static const String selectAll = "Select All";
   static const String logNumber = "Log Number";
-  static const String isRequired = " - is Required";
+  static const String isRequired = " - is required";
   static const String download = "Download";
   static const String submit = "Submit";
   static const String link = "Link";
@@ -86,6 +87,7 @@ class AppString {
   static const String addNotes = "Add Notes";
   static const String enterNotes = "Enter any additional notes here";
   static const String addLicencePhoto = "Add Licence Photo";
+  static const String addTestImage = "Add Test Image";
   static const String overwrite = "Overwrite oldest record";
   static const String activeTest = "Active Test Display";
   static const String meterView = "Meter View";
