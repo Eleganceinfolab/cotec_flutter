@@ -203,7 +203,7 @@ class LogListScreen extends GetWidget<LogListScreenController> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'From B Number',
+                            'Form B Number',
                             style: CTC.style(18,
                                 fontWeight: FontWeight.w600,
                                 fontColor:

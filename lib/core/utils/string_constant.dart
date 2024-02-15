@@ -13,6 +13,7 @@ class AppString {
   static const String deviceList = "Bluetooth device List";
   static const String cancel = "Cancel";
   static const String test = "Test";
+  static const String logATest = "Log a test";
   static const String testType = "Test Type*";
   static const String testTypes = "Test Type";
   static const String name = "Name";

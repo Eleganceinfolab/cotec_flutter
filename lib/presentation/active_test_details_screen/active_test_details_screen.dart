@@ -5,8 +5,7 @@ import 'package:image_picker/image_picker.dart';
 
 import 'controller/active_test_details_screen_controller.dart';
 
-class ActiveTestDetailScreen
-    extends GetWidget<ActiveTestDetailScreenController> {
+class ActiveTestDetailScreen extends GetWidget<ActiveTestDetailScreenController> {
   const ActiveTestDetailScreen({super.key});
 
   @override
@@ -14,7 +13,7 @@ class ActiveTestDetailScreen
     sizeCalculate(context);
     return Scaffold(
         backgroundColor: ColorConstant.backgroundColor(context),
-        appBar: const CommonAppbar(title: AppString.activeTest),
+        appBar: const CommonAppbar(title: AppString.createLog),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: getWidth(16)),
@@ -25,29 +24,17 @@ class ActiveTestDetailScreen
                   height: getHeight(10),
                 ),
                 Container(
-                  decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(
-                                Theme.of(context).brightness == Brightness.light
-                                    ? 0.3
-                                    : 0),
-                            blurRadius: 5.0,
-                            spreadRadius: 0.5),
-                      ],
-                      borderRadius: BorderRadius.circular(15),
-                      color: ColorConstant.containerBackGround(context)),
-                  padding: EdgeInsets.symmetric(
-                      horizontal: getWidth(18), vertical: getHeight(20)),
+                  decoration: BoxDecoration(boxShadow: [
+                    BoxShadow(color: Colors.grey.withOpacity(Theme.of(context).brightness == Brightness.light ? 0.3 : 0), blurRadius: 5.0, spreadRadius: 0.5),
+                  ], borderRadius: BorderRadius.circular(15), color: ColorConstant.containerBackGround(context)),
+                  padding: EdgeInsets.symmetric(horizontal: getWidth(18), vertical: getHeight(20)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Center(
                         child: Text(
                           '8.51 kV',
-                          style: CTC.style(50,
-                              fontWeight: FontWeight.bold,
-                              fontColor: ColorConstant.primaryYellow),
+                          style: CTC.style(50, fontWeight: FontWeight.bold, fontColor: ColorConstant.primaryYellow),
                         ),
                       ),
                       SizedBox(
@@ -59,17 +46,11 @@ class ActiveTestDetailScreen
                       SizedBox(
                         height: getHeight(25),
                       ),
-                      itemNameValue(AppString.startUp, '09:18 AM', context,
-                          isSize: true),
-                      itemNameValue(
-                          AppString.voltsDetected, '09:20 AM', context,
-                          isSize: true),
-                      itemNameValue(AppString.duration, '3:17 Minutes', context,
-                          isSize: true),
-                      itemNameValue(AppString.voltsHie, '3.98 kV', context,
-                          isSize: true),
-                      itemNameValue(AppString.voltLow, '2.09 kV', context,
-                          isSize: true),
+                      itemNameValue(AppString.startUp, '09:18 AM', context, isSize: true),
+                      itemNameValue(AppString.voltsDetected, '09:20 AM', context, isSize: true),
+                      itemNameValue(AppString.duration, '3:17 Minutes', context, isSize: true),
+                      itemNameValue(AppString.voltsHie, '3.98 kV', context, isSize: true),
+                      itemNameValue(AppString.voltLow, '2.09 kV', context, isSize: true),
                     ],
                   ),
                 ),
@@ -77,20 +58,10 @@ class ActiveTestDetailScreen
                   height: getHeight(20),
                 ),
                 Container(
-                  decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(
-                                Theme.of(context).brightness == Brightness.light
-                                    ? 0.3
-                                    : 0),
-                            blurRadius: 5.0,
-                            spreadRadius: 0.5),
-                      ],
-                      borderRadius: BorderRadius.circular(15),
-                      color: ColorConstant.containerBackGround(context)),
-                  padding: EdgeInsets.symmetric(
-                      horizontal: getWidth(18), vertical: getHeight(20)),
+                  decoration: BoxDecoration(boxShadow: [
+                    BoxShadow(color: Colors.grey.withOpacity(Theme.of(context).brightness == Brightness.light ? 0.3 : 0), blurRadius: 5.0, spreadRadius: 0.5),
+                  ], borderRadius: BorderRadius.circular(15), color: ColorConstant.containerBackGround(context)),
+                  padding: EdgeInsets.symmetric(horizontal: getWidth(18), vertical: getHeight(20)),
                   child: Column(
                     children: [
                       Row(
@@ -99,19 +70,13 @@ class ActiveTestDetailScreen
                           Expanded(
                             child: Text(
                               AppString.testTypes,
-                              style: CTC.style(14,
-                                  fontWeight: FontWeight.w600,
-                                  fontColor:
-                                      ColorConstant.textDarkTOLight(context)),
+                              style: CTC.style(14, fontWeight: FontWeight.w600, fontColor: ColorConstant.textDarkTOLight(context)),
                             ),
                           ),
                           Expanded(
                             child: Text(
                               'Isolation Pre-Test - Energised',
-                              style: CTC.style(14,
-                                  fontWeight: FontWeight.w500,
-                                  fontColor:
-                                      ColorConstant.textDarkTOLight(context)),
+                              style: CTC.style(14, fontWeight: FontWeight.w500, fontColor: ColorConstant.textDarkTOLight(context)),
                             ),
                           ),
                         ],
@@ -121,8 +86,7 @@ class ActiveTestDetailScreen
                       ),
                       itemNameValue(AppString.fullName, 'James Hunt', context),
                       itemNameValue(AppString.ptsNumber, 'PTS123NUM', context),
-                      itemNameValue(AppString.companyName,
-                          'Company Name > Depot', context),
+                      itemNameValue(AppString.companyName, 'Company Name > Depot', context),
                       itemNameValue(AppString.fromBNumber, 'FORMBNUM', context),
                       itemNameValue(AppString.fromCNumber, 'FORMCNUM', context),
                       itemNameValue(
@@ -137,28 +101,16 @@ class ActiveTestDetailScreen
                   height: getHeight(30),
                 ),
                 Container(
-                  decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(
-                                Theme.of(context).brightness == Brightness.light
-                                    ? 0.3
-                                    : 0),
-                            blurRadius: 5.0,
-                            spreadRadius: 0.5),
-                      ],
-                      borderRadius: BorderRadius.circular(15),
-                      color: ColorConstant.containerBackGround(context)),
-                  padding: EdgeInsets.symmetric(
-                      horizontal: getWidth(18), vertical: getHeight(20)),
+                  decoration: BoxDecoration(boxShadow: [
+                    BoxShadow(color: Colors.grey.withOpacity(Theme.of(context).brightness == Brightness.light ? 0.3 : 0), blurRadius: 5.0, spreadRadius: 0.5),
+                  ], borderRadius: BorderRadius.circular(15), color: ColorConstant.containerBackGround(context)),
+                  padding: EdgeInsets.symmetric(horizontal: getWidth(18), vertical: getHeight(20)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         AppString.addTestImage,
-                        style: CTC.style(16,
-                            fontWeight: FontWeight.w500,
-                            fontColor: ColorConstant.textBlackToWhite(context)),
+                        style: CTC.style(16, fontWeight: FontWeight.w500, fontColor: ColorConstant.textBlackToWhite(context)),
                       ),
                       SizedBox(
                         height: getHeight(10),
@@ -166,14 +118,8 @@ class ActiveTestDetailScreen
                       Row(
                         children: [
                           Container(
-                            decoration: const BoxDecoration(
-                                color: ColorConstant.primaryBlue,
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(10),
-                                    bottomLeft: Radius.circular(10))),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: getWidth(20),
-                                vertical: getHeight(10)),
+                            decoration: const BoxDecoration(color: ColorConstant.primaryBlue, borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10))),
+                            padding: EdgeInsets.symmetric(horizontal: getWidth(20), vertical: getHeight(10)),
                             child: CustomImageView(
                               svgPath: ImageConstant.upload,
                             ),
@@ -186,17 +132,13 @@ class ActiveTestDetailScreen
                                     context: context,
                                     builder: (context) {
                                       return Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: getWidth(20),
-                                            vertical: getHeight(20)),
+                                        padding: EdgeInsets.symmetric(horizontal: getWidth(20), vertical: getHeight(20)),
                                         child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
+                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                           children: [
                                             IconButton(
                                                 onPressed: () {
-                                                  controller.pickImages(
-                                                      ImageSource.camera);
+                                                  controller.pickImages(ImageSource.camera);
                                                 },
                                                 icon: Icon(
                                                   Icons.camera,
@@ -204,8 +146,7 @@ class ActiveTestDetailScreen
                                                 )),
                                             IconButton(
                                                 onPressed: () {
-                                                  controller.pickImages(
-                                                      ImageSource.gallery);
+                                                  controller.pickImages(ImageSource.gallery);
                                                 },
                                                 icon: Icon(
                                                   Icons.image,
@@ -218,15 +159,9 @@ class ActiveTestDetailScreen
                               },
                               child: Container(
                                   decoration: BoxDecoration(
-                                      color: Theme.of(context).brightness ==
-                                              Brightness.light
-                                          ? ColorConstant.primaryWhite
-                                          : ColorConstant.greyDCDC,
-                                      border: Border.all(
-                                          color: ColorConstant.greyD3),
-                                      borderRadius: const BorderRadius.only(
-                                          topRight: Radius.circular(10),
-                                          bottomRight: Radius.circular(10))),
+                                      color: Theme.of(context).brightness == Brightness.light ? ColorConstant.primaryWhite : ColorConstant.greyDCDC,
+                                      border: Border.all(color: ColorConstant.greyD3),
+                                      borderRadius: const BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10))),
                                   padding: EdgeInsets.only(
                                     left: getWidth(8),
                                     right: getWidth(8),
@@ -235,22 +170,14 @@ class ActiveTestDetailScreen
                                   ),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       Expanded(
                                         child: Obx(
                                           () => Text(
-                                            controller.image.value.isEmpty
-                                                ? 'Select Test Image'
-                                                : controller.image.value,
+                                            controller.image.value.isEmpty ? 'Select Test Image' : controller.image.value,
                                             maxLines: 1,
-                                            style: CTC.style(14,
-                                                fontColor: controller
-                                                        .image.value.isEmpty
-                                                    ? Colors.grey
-                                                    : ColorConstant.textBlack,
-                                                fontWeight: FontWeight.w600),
+                                            style: CTC.style(14, fontColor: controller.image.value.isEmpty ? Colors.grey : ColorConstant.textBlack, fontWeight: FontWeight.w600),
                                           ),
                                         ),
                                       ),
@@ -264,8 +191,7 @@ class ActiveTestDetailScreen
                                                   controller.image.value = '';
                                                 },
                                                 child: CustomImageView(
-                                                  svgPath:
-                                                      ImageConstant.fillClose,
+                                                  svgPath: ImageConstant.fillClose,
                                                 ))
                                             : SizedBox.shrink(),
                                       )
@@ -291,15 +217,11 @@ class ActiveTestDetailScreen
                       ),
                       CustomAppTextFormField(
                         maxLines: 3,
-                        fontStyle: CTC.style(16,
-                            fontWeight: FontWeight.w500,
-                            fontColor: ColorConstant.grey9DA),
+                        fontStyle: CTC.style(16, fontWeight: FontWeight.w500, fontColor: ColorConstant.grey9DA),
                         hintText: AppString.enterNotes,
                         fillColor: ColorConstant.containerBackGround(context),
                         borderRadius: BorderRadius.circular(5),
-                        hintFontStyle: CTC.style(16,
-                            fontWeight: FontWeight.w500,
-                            fontColor: ColorConstant.grey9DA),
+                        hintFontStyle: CTC.style(16, fontWeight: FontWeight.w500, fontColor: ColorConstant.grey9DA),
                         borderColor: ColorConstant.text00ToWhite(context),
                       )
                     ],
@@ -311,7 +233,20 @@ class ActiveTestDetailScreen
                 AppElevatedButton(
                   buttonName: AppString.createLog,
                   onPressed: () {
-                    createLogDialog(context);
+                    Get.toNamed(AppRoutes.logListScreenRoute);
+                  },
+                ),
+                SizedBox(
+                  height: getHeight(10),
+                ),
+                AppElevatedButton(
+                  borderColor: ColorConstant.primaryBlue,
+                  hasGradient: false,
+                  textColor: ColorConstant.textBlueToYellow(context),
+                  buttonColor: ColorConstant.containerBackGround(context),
+                  buttonName: AppString.retry,
+                  onPressed: () {
+                    Get.back();
                   },
                 ),
                 SizedBox(
@@ -323,8 +258,7 @@ class ActiveTestDetailScreen
         ));
   }
 
-  Widget itemNameValue(String title, String value, BuildContext context,
-      {bool isSize = false}) {
+  Widget itemNameValue(String title, String value, BuildContext context, {bool isSize = false}) {
     return Column(
       children: [
         Row(
@@ -333,17 +267,13 @@ class ActiveTestDetailScreen
             Expanded(
               child: Text(
                 '$title:',
-                style: CTC.style(14,
-                    fontWeight: FontWeight.w600,
-                    fontColor: ColorConstant.textDarkTOLight(context)),
+                style: CTC.style(14, fontWeight: FontWeight.w600, fontColor: ColorConstant.textDarkTOLight(context)),
               ),
             ),
             Expanded(
               child: Text(
                 value,
-                style: CTC.style(14,
-                    fontWeight: FontWeight.w500,
-                    fontColor: ColorConstant.textDarkTOLight(context)),
+                style: CTC.style(14, fontWeight: FontWeight.w500, fontColor: ColorConstant.textDarkTOLight(context)),
               ),
             ),
           ],
@@ -365,9 +295,7 @@ class ActiveTestDetailScreen
               child: Text(
                 AppString.createLog,
                 textAlign: TextAlign.center,
-                style: CTC.style(24,
-                    fontWeight: FontWeight.w600,
-                    fontColor: ColorConstant.textBlueToYellow(context)),
+                style: CTC.style(24, fontWeight: FontWeight.w600, fontColor: ColorConstant.textBlueToYellow(context)),
               ),
             ),
             SizedBox(
@@ -377,8 +305,7 @@ class ActiveTestDetailScreen
               child: Text(
                 AppString.createLogText,
                 textAlign: TextAlign.center,
-                style: CTC.style(14,
-                    fontColor: ColorConstant.textBlackToWhite(context)),
+                style: CTC.style(14, fontColor: ColorConstant.textBlackToWhite(context)),
               ),
             ),
             SizedBox(

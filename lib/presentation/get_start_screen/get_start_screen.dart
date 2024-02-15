@@ -11,26 +11,44 @@ class GetStartScreen extends GetWidget<GetStartScreenController> {
     sizeCalculate(context);
     return Scaffold(
         backgroundColor: ColorConstant.backgroundColor(context),
-        appBar: const CommonAppbar(hasBack: false),
-        body: Column(
+
+        body: Stack(
           children: [
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: getWidth(65), vertical: getHeight(100)),
-              child: CustomImageView(
-                imagePath: ImageConstant.appLogo,
-              ),
+            Column(
+              children: [
+                CommonAppbar(hasBack: false),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: getWidth(47),
+                       right: getWidth(47),
+                       bottom: getHeight(30),
+                        ),
+                  child: AppElevatedButton(
+                    hasBoxShadow: true,
+                    buttonName: AppString.getStartedCamelCase,
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.homeScreenRoute);
+                    },
+                  ),
+                ),
+              ],
             ),
-            const Spacer(),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  vertical: getHeight(40), horizontal: getWidth(47)),
-              child: AppElevatedButton(
-                hasBoxShadow: true,
-                buttonName: AppString.getStartedCamelCase,
-                onPressed: () {
-                  Get.toNamed(AppRoutes.homeScreenRoute);
-                },
+            Center(
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: getWidth(33)
+                ),
+                child: CustomImageView(
+                  imagePath: ImageConstant.appLogo,
+                ),
               ),
             ),
           ],

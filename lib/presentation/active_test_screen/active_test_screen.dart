@@ -49,6 +49,9 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                   axes: <RadialAxis>[
                                     RadialAxis(
                                       minimum: 0,
+                                      showFirstLabel: false,
+                                      showTicks: false,
+                                      showLabels: false,
                                       interval: controller
                                           .voltMeterData.value.interval,
                                       axisLineStyle: const AxisLineStyle(
@@ -62,8 +65,7 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                           startValue: 0,
                                           endValue: controller
                                               .voltMeterData.value.endValue,
-                                          color: controller
-                                              .voltMeterData.value.color,
+                                          color: Colors.transparent,
                                           endWidth: 25,
                                           startWidth: 25,
                                         ),
@@ -71,6 +73,7 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                         // GaugeRange(startValue: 100, endValue: 150, color: Colors.red)
                                       ],
                                       tickOffset: 10,
+                                      startAngle: 120,
                                       minorTickStyle: MinorTickStyle(
                                           length: 8,
                                           thickness: 3,
@@ -90,8 +93,7 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                         NeedlePointer(
                                           needleEndWidth: 11,
                                           needleStartWidth: 0,
-                                          value: controller
-                                              .voltMeterData.value.value,
+                                          value: 10,
                                           needleColor: ColorConstant.redF95,
                                           knobStyle: const KnobStyle(
                                               color: ColorConstant.greyE6E6,
@@ -99,7 +101,7 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                           // value: double.parse(randomValues.toString()),
                                           animationDuration: 1000,
                                           animationType:
-                                              AnimationType.elasticOut,
+                                              AnimationType.ease,
                                           enableAnimation: true,
                                           needleLength: 0.8,
                                         )
@@ -126,7 +128,90 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                             angle: 90,
                                             positionFactor: 0.7)
                                       ],
-                                    )
+                                    ),
+                                    RadialAxis(
+                                      minimum: 0,
+                                      interval: controller
+                                          .voltMeterData.value.interval,
+                                      axisLineStyle: const AxisLineStyle(
+                                          color: Colors.transparent,
+                                          thickness: 15),
+                                      maximum: controller
+                                          .voltMeterData.value.maximum,
+                                      ranges: <GaugeRange>[
+                                        GaugeRange(
+                                          rangeOffset: 0,
+                                          startValue: 0,
+                                          endValue: controller
+                                              .voltMeterData.value.endValue,
+                                          color: controller
+                                              .voltMeterData.value.color,
+                                          endWidth: 25,
+                                          startWidth: 25,
+                                        ),
+                                        // GaugeRange(startValue: 50, endValue: 100, color: Colors.orange),
+                                        // GaugeRange(startValue: 100, endValue: 150, color: Colors.red)
+                                      ],
+                                      tickOffset: 10,
+                                      startAngle: 130,
+                                      minorTickStyle: MinorTickStyle(
+                                          length: 8,
+                                          thickness: 3,
+                                          color: ColorConstant.text00ToWhite(
+                                              context)),
+                                      majorTickStyle: MajorTickStyle(
+                                          length: 12,
+                                          thickness: 5,
+                                          color: ColorConstant.text00ToWhite(
+                                              context)),
+                                      axisLabelStyle: GaugeTextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18,
+                                          color: ColorConstant.text00ToWhite(
+                                              context)),
+                                      pointers: <GaugePointer>[
+                                        NeedlePointer(
+                                          needleEndWidth: 11,
+                                          needleStartWidth: 0,
+                                          value: controller
+                                              .voltMeterData.value.value,
+                                          needleColor: Colors.transparent,
+                                          knobStyle: const KnobStyle(
+                                              color: Colors.transparent,
+                                              knobRadius: 0.12),
+                                          // value: double.parse(randomValues.toString()),
+                                          animationDuration: 1000,
+                                          animationType:
+                                          AnimationType.ease,
+                                          enableAnimation: true,
+                                          needleLength: 0.8,
+                                        )
+                                      ],
+                                      annotations: <GaugeAnnotation>[
+                                        GaugeAnnotation(
+                                            widget: Text(
+                                              controller.voltMeterData.value
+                                                  .value ==
+                                                  0.0 ||
+                                                  controller.voltShow.value
+                                                  ? '0\nV'
+                                                  : '${controller.voltMeterData.value.value.toStringAsFixed(2)}\n${controller.voltMeterData.value.voltage}',
+                                              key: ValueKey(controller
+                                                  .voltMeterData.value
+                                                  .toString()),
+                                              textAlign: TextAlign.center,
+                                              style: CTC.style(44,
+                                                  fontColor: ColorConstant
+                                                      .textGrey4c4cToWhite(
+                                                      context),
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            angle: 90,
+                                            positionFactor: 0.7)
+                                      ],
+                                    ),
+
+
                                   ]),
                             )
                           : Container(
@@ -137,10 +222,11 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                       context),
                                   border: Border.all(
                                       color: ColorConstant.redFF2, width: 3),
-                                  borderRadius: BorderRadius.circular(25)),
+                                  borderRadius: BorderRadius.circular(12)),
                               padding: EdgeInsets.symmetric(
-                                  vertical: getHeight(10),
-                                  horizontal: getWidth(30)),
+                                  vertical: getHeight(30),
+                                  horizontal: getWidth(50)
+                              ),
                               child: Column(
                                 children: [
                                   Text(

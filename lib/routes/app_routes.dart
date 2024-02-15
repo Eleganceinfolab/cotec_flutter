@@ -34,7 +34,7 @@ class AppRoutes {
   static List<GetPage> pages = [
     GetPage(
         name: splashScreenRoute,
-        page: () => const SplashScreen(),
+        page: () =>  SplashScreen(),
         bindings: [
           SplashScreenBinding(),
         ],

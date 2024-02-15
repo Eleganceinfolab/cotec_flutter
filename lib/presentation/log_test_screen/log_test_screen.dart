@@ -11,7 +11,7 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
     return Scaffold(
         backgroundColor: ColorConstant.backgroundColor(context),
         appBar: CommonAppbar(
-          title: AppString.test,
+          title: AppString.logATest,
         ),
         body: SingleChildScrollView(
           child: Padding(
