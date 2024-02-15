@@ -73,6 +73,7 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
                     onChanged: (String? value) {
                       if (value!.isNotEmpty) {
                         controller.testTypeValidate.value = false;
+                        controller.isAllValidate.value = false;
                       }
                       controller.selectedValue.value = value!;
                       controller.selectedValueDrop.value = value!;
@@ -122,6 +123,7 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
                       onChanged: (p0) {
                         if (p0.isNotEmpty) {
                           controller.nameValidate.value = false;
+                          controller.isAllValidate.value = false;
                         }
                       },
                       textController: controller.nameController),
@@ -133,6 +135,7 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
                       onChanged: (p0) {
                         if (p0.isNotEmpty) {
                           controller.ptsValidate.value = false;
+                          controller.isAllValidate.value = false;
                         }
                       },
                       textController: controller.ptsNumberController),
@@ -145,6 +148,7 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
                       onChanged: (p0) {
                         if (p0.isNotEmpty) {
                           controller.companyValidate.value = false;
+                          controller.isAllValidate.value = false;
                         }
                       },
                       textController: controller.companyNameController),
@@ -156,6 +160,7 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
                       onChanged: (p0) {
                         if (p0.isNotEmpty) {
                           controller.bNumberValidate.value = false;
+                          controller.isAllValidate.value = false;
                         }
                       },
                       textController: controller.bNumberController),
@@ -167,6 +172,7 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
                       onChanged: (p0) {
                         if (p0.isNotEmpty) {
                           controller.cNumberValidate.value = false;
+                          controller.isAllValidate.value = false;
                         }
                       },
                       textController: controller.cNumberController),
@@ -177,6 +183,7 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
                       onChanged: (p0) {
                         if (p0.isNotEmpty) {
                           controller.locationValidate.value = false;
+                          controller.isAllValidate.value = false;
                         }
                       },
                       isValidate: !controller.locationValidate.value,

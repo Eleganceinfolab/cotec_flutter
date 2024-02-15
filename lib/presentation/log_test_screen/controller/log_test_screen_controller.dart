@@ -46,6 +46,7 @@ class LogTestScreenController extends GetxController {
 
   void next() {
     if (isAllValidate.value) {
+      print('object == ${isAllValidate.value}');
       if (selectedValueDrop.isEmpty) {
         testTypeValidate.value = true;
         isAllValidate.value = true;
@@ -96,6 +97,8 @@ class LogTestScreenController extends GetxController {
       //   isAllValidate.value = false;
       // }
     } else {
+      print('object == ${isAllValidate.value}');
+
       Get.offAndToNamed(AppRoutes.activeTestScreenRoute);
     }
   }

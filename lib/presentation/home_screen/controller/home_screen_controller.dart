@@ -27,7 +27,7 @@ class HomeScreenController extends GetxController {
     HomeMenu(
         type: 'logTest',
         title: AppString.logTest,
-        image: ImageConstant.logTest),
+        image: ImageConstant.icLogTest),
     HomeMenu(
         type: 'measureVolts',
         title: AppString.measureVolts,

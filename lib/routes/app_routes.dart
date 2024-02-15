@@ -34,66 +34,75 @@ class AppRoutes {
   static List<GetPage> pages = [
     GetPage(
         name: splashScreenRoute,
-        page: () =>  SplashScreen(),
+        page: () => SplashScreen(),
         bindings: [
           SplashScreenBinding(),
         ],
-        transitionDuration: const Duration(milliseconds: 150)),
+        transition: Transition.fade,
+        transitionDuration: const Duration(milliseconds: 200)),
     GetPage(
         name: getStartScreenRoute,
         page: () => const GetStartScreen(),
         bindings: [
           GetStartScreenBinding(),
         ],
-        transitionDuration: const Duration(milliseconds: 150)),
+        transition: Transition.rightToLeft,
+        transitionDuration: const Duration(milliseconds: 200)),
     GetPage(
         name: homeScreenRoute,
         page: () => const HomeScreen(),
         bindings: [
           HomeScreenBinding(),
         ],
-        transitionDuration: const Duration(milliseconds: 150)),
+        transition: Transition.rightToLeft,
+        transitionDuration: const Duration(milliseconds: 200)),
     GetPage(
         name: logTestScreenRoute,
         page: () => const LogTestScreen(),
         bindings: [
           LogTestScreenBinding(),
         ],
-        transitionDuration: const Duration(milliseconds: 150)),
+        transition: Transition.rightToLeft,
+        transitionDuration: const Duration(milliseconds: 200)),
     GetPage(
         name: logListScreenRoute,
         page: () => const LogListScreen(),
         bindings: [
           LogListScreenBinding(),
         ],
-        transitionDuration: const Duration(milliseconds: 150)),
+        transition: Transition.rightToLeft,
+        transitionDuration: const Duration(milliseconds: 200)),
     GetPage(
         name: logDetailsScreenRoute,
         page: () => const LogDetailsScreen(),
         bindings: [
           LogDetailsScreenBinding(),
         ],
-        transitionDuration: const Duration(milliseconds: 150)),
+        transition: Transition.rightToLeft,
+        transitionDuration: const Duration(milliseconds: 200)),
     GetPage(
         name: settingScreenRoute,
         page: () => const SettingScreen(),
         bindings: [
           SettingScreenBinding(),
         ],
-        transitionDuration: const Duration(milliseconds: 150)),
+        transition: Transition.rightToLeft,
+        transitionDuration: const Duration(milliseconds: 200)),
     GetPage(
         name: activeTestScreenRoute,
         page: () => const ActiveTestScreen(),
         bindings: [
           ActiveTestScreenBinding(),
         ],
-        transitionDuration: const Duration(milliseconds: 150)),
+        transition: Transition.rightToLeft,
+        transitionDuration: const Duration(milliseconds: 200)),
     GetPage(
         name: activeTestDetailsScreenRoute,
         page: () => const ActiveTestDetailScreen(),
         bindings: [
           ActiveTestDetailScreenBinding(),
         ],
-        transitionDuration: const Duration(milliseconds: 150)),
+        transition: Transition.rightToLeft,
+        transitionDuration: const Duration(milliseconds: 200)),
   ];
 }

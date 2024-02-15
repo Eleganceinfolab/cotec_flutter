@@ -3,6 +3,7 @@ class ImageConstant {
   static String bluetooth = 'assets/images/svg/img_bluetooth.svg';
   static String info = 'assets/images/svg/img_info.svg';
   static String logTest = 'assets/images/svg/img_log_tests.svg';
+  static String icLogTest = 'assets/images/svg/ic_log_test.svg';
   static String logs = 'assets/images/svg/img_logs.svg';
   static String setting = 'assets/images/svg/img_setting.svg';
   static String sync = 'assets/images/svg/img_sync.svg';
