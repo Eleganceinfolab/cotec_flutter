@@ -51,51 +51,51 @@ class HomeScreen extends GetWidget<HomeScreenController> {
                 SizedBox(
                   height: getHeight(27),
                 ),
-                Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: getWidth(25), vertical: getHeight(20)),
-                  decoration: BoxDecoration(
-                    color: ColorConstant.primaryBlue,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          CustomImageView(
-                            svgPath: ImageConstant.info,
-                          ),
-                          SizedBox(
-                            width: getWidth(8),
-                          ),
-                          Text(
-                            AppString.newDataBeen,
-                            style: CTC.style(16,
-                                fontWeight: FontWeight.w600,
-                                fontColor: ColorConstant.primaryWhite),
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: getHeight(8),
-                      ),
-                      AppElevatedButton(
-                        showTextIcon: true,
-                        svgPath: ImageConstant.sync,
-                        buttonName: AppString.syncData,
-                        onPressed: () {
-                          controller.syncData(context);
-                        },
-                      ),
-                      SizedBox(
-                        height: getHeight(10),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: getHeight(33),
-                ),
+                // Container(
+                //   padding: EdgeInsets.symmetric(
+                //       horizontal: getWidth(25), vertical: getHeight(20)),
+                //   decoration: BoxDecoration(
+                //     color: ColorConstant.primaryBlue,
+                //     borderRadius: BorderRadius.circular(15),
+                //   ),
+                //   child: Column(
+                //     children: [
+                //       Row(
+                //         children: [
+                //           CustomImageView(
+                //             svgPath: ImageConstant.info,
+                //           ),
+                //           SizedBox(
+                //             width: getWidth(8),
+                //           ),
+                //           Text(
+                //             AppString.newDataBeen,
+                //             style: CTC.style(16,
+                //                 fontWeight: FontWeight.w600,
+                //                 fontColor: ColorConstant.primaryWhite),
+                //           )
+                //         ],
+                //       ),
+                //       SizedBox(
+                //         height: getHeight(8),
+                //       ),
+                //       AppElevatedButton(
+                //         showTextIcon: true,
+                //         svgPath: ImageConstant.sync,
+                //         buttonName: AppString.syncData,
+                //         onPressed: () {
+                //           controller.syncData(context);
+                //         },
+                //       ),
+                //       SizedBox(
+                //         height: getHeight(10),
+                //       ),
+                //     ],
+                //   ),
+                // ),
+                // SizedBox(
+                //   height: getHeight(33),
+                // ),
                 Text(
                   '${AppString.dataLast}: 10:15AM 01/12/2022',
                   style: CTC.style(

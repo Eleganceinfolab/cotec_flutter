@@ -81,20 +81,20 @@ class LogTestScreenController extends GetxController {
         bNumberValidate.value = false;
         isAllValidate.value = false;
       }
-      if (cNumberController.text.isEmpty) {
-        cNumberValidate.value = true;
-        isAllValidate.value = true;
-      } else {
-        cNumberValidate.value = false;
-        isAllValidate.value = false;
-      }
-      if (locationController.text.isEmpty) {
-        locationValidate.value = true;
-        isAllValidate.value = true;
-      } else {
-        locationValidate.value = false;
-        isAllValidate.value = false;
-      }
+      // if (cNumberController.text.isEmpty) {
+      //   cNumberValidate.value = true;
+      //   isAllValidate.value = true;
+      // } else {
+      //   cNumberValidate.value = false;
+      //   isAllValidate.value = false;
+      // }
+      // if (locationController.text.isEmpty) {
+      //   locationValidate.value = true;
+      //   isAllValidate.value = true;
+      // } else {
+      //   locationValidate.value = false;
+      //   isAllValidate.value = false;
+      // }
     } else {
       Get.offAndToNamed(AppRoutes.activeTestScreenRoute);
     }

@@ -42,7 +42,9 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                               borderRadius: BorderRadius.circular(getWidth(50)),
                               child: SfRadialGauge(
                                   // enableLoadingAnimation: true,
-                                  backgroundColor: ColorConstant.containerBackGround(context),
+                                  backgroundColor:
+                                      ColorConstant.containerBackGround(
+                                          context),
                                   animationDuration: 4500,
                                   axes: <RadialAxis>[
                                     RadialAxis(
@@ -60,7 +62,8 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                           startValue: 0,
                                           endValue: controller
                                               .voltMeterData.value.endValue,
-                                          color: ColorConstant.primaryGreen,
+                                          color: controller
+                                              .voltMeterData.value.color,
                                           endWidth: 25,
                                           startWidth: 25,
                                         ),
@@ -94,9 +97,9 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                               color: ColorConstant.greyE6E6,
                                               knobRadius: 0.12),
                                           // value: double.parse(randomValues.toString()),
-                                          animationDuration: 500,
+                                          animationDuration: 1000,
                                           animationType:
-                                              AnimationType.linear,
+                                              AnimationType.elasticOut,
                                           enableAnimation: true,
                                           needleLength: 0.8,
                                         )
@@ -105,8 +108,9 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                         GaugeAnnotation(
                                             widget: Text(
                                               controller.voltMeterData.value
-                                                          .value ==
-                                                      0.0
+                                                              .value ==
+                                                          0.0 ||
+                                                      controller.voltShow.value
                                                   ? '0\nV'
                                                   : '${controller.voltMeterData.value.value.toStringAsFixed(2)}\n${controller.voltMeterData.value.voltage}',
                                               key: ValueKey(controller
@@ -116,7 +120,7 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                               style: CTC.style(44,
                                                   fontColor: ColorConstant
                                                       .textGrey4c4cToWhite(
-                                                      context),
+                                                          context),
                                                   fontWeight: FontWeight.bold),
                                             ),
                                             angle: 90,
@@ -156,7 +160,9 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                             )),
                       Bounce(
                         onTap: () {
-                          warningDetectDialog(context);
+                          // warningDetectDialog(context);
+
+                          controller.next();
                         },
                         child: CustomImageView(
                           svgPath: ImageConstant.capture,
@@ -436,15 +442,15 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: getHeight(25),
-                ),
-                AppElevatedButton(
-                  buttonName: AppString.confirm,
-                  onPressed: () {
-                    controller.next();
-                  },
-                ),
+                // SizedBox(
+                //   height: getHeight(25),
+                // ),
+                // AppElevatedButton(
+                //   buttonName: AppString.confirm,
+                //   onPressed: () {
+                //     controller.next();
+                //   },
+                // ),
                 SizedBox(
                   height: getHeight(25),
                 ),

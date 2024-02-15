@@ -6,7 +6,7 @@ class AppString {
   static const String logs = "Logs";
   static const String userManual = "User Manual";
   static const String scanForDevices = "Scan for devices";
-  static const String setting = "Setting";
+  static const String setting = "Settings";
   static const String newDataBeen = "New data has not been synced";
   static const String syncData = "Sync Data";
   static const String dataLast = "Data Last Synced";
@@ -43,7 +43,7 @@ class AppString {
   static const String enterHere = "Enter here";
   static const String hide = "******";
   static const String enterPTSNumber = "Enter PTS Number";
-  static const String johnCompany = "John's Company";
+  static const String johnCompany = "Enter Company Name";
   static const String enterBNumber = "Enter Form B Number";
   static const String enterCNumber = "Enter Form C Number";
   static const String enterLocation = "Enter Location";
@@ -87,7 +87,7 @@ class AppString {
   static const String addNotes = "Add Notes";
   static const String enterNotes = "Enter any additional notes here";
   static const String addLicencePhoto = "Add Licence Photo";
-  static const String addTestImage = "Add Test Image";
+  static const String addTestImage = "Add an Image";
   static const String overwrite = "Overwrite oldest record";
   static const String activeTest = "Active Test Display";
   static const String meterView = "Meter View";

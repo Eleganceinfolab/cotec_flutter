@@ -8,6 +8,7 @@ class ActiveTestScreenController extends GetxController {
   Rx<VoltMeterData> voltMeterData = VoltMeterData().obs;
   RxBool hasVoiceActive = false.obs;
   RxBool hasMeterView = false.obs;
+  RxBool voltShow = false.obs;
   @override
   void onInit() {
     voltMeterData.value = VoltMeterData(
@@ -15,10 +16,11 @@ class ActiveTestScreenController extends GetxController {
         endValue: 301,
         interval: 100,
         maximum: 301,
-        value: 10,
+        value: 15,
         voltage: 'V');
+    voltShow.value = true;
     Future.delayed(
-      Duration(milliseconds: 500),
+      Duration(milliseconds: 300),
       () {
         voltMeterData.value = VoltMeterData(
             color: ColorConstant.primaryGreen,
@@ -27,6 +29,7 @@ class ActiveTestScreenController extends GetxController {
             maximum: 301,
             value: 0,
             voltage: 'V');
+        voltShow.value = false;
       },
     );
 

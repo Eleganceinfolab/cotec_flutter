@@ -11,7 +11,7 @@ class GetStartScreen extends GetWidget<GetStartScreenController> {
     sizeCalculate(context);
     return Scaffold(
         backgroundColor: ColorConstant.backgroundColor(context),
-        appBar: const CommonAppbar(title: AppString.getStartedCamelCase, hasBack: false),
+        appBar: const CommonAppbar(hasBack: false),
         body: Column(
           children: [
             Padding(

@@ -53,7 +53,16 @@ class AppElevatedButton extends StatelessWidget {
               : Border.all(
                   color: ColorConstant.textBlueToYellow(context),
                   width: getHeight(1)),
-          boxShadow:hasBoxShadow??false? [BoxShadow(color: Colors.grey,offset: Offset(0.1, 3.5),blurRadius: 4)]:null,
+          boxShadow: hasBoxShadow ?? false
+              ? [
+                  BoxShadow(
+                      color: Theme.of(context).brightness == Brightness.light
+                          ? Colors.grey
+                          : ColorConstant.transparent,
+                      offset: Offset(0.1, 3.5),
+                      blurRadius: 4)
+                ]
+              : null,
           color: buttonColor ?? ColorConstant.primaryYellow,
           borderRadius: const BorderRadius.all(Radius.circular(50)),
         ),
