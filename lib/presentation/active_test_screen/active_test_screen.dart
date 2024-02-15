@@ -393,44 +393,44 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                       SizedBox(
                         height: getHeight(15),
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: ColorConstant.primaryYellow),
-                        padding: EdgeInsets.symmetric(
-                            horizontal: getWidth(18), vertical: getHeight(10)),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                CustomImageView(
-                                  svgPath: ImageConstant.warning,
-                                ),
-                                SizedBox(
-                                  width: getWidth(10),
-                                ),
-                                Text(
-                                  AppString.lowBattery,
-                                  style: CTC.style(14,
-                                      fontWeight: FontWeight.w600),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              height: getHeight(15),
-                            ),
-                            Text(
-                              AppString.lowBatteryDes,
-                              style: CTC.style(12,
-                                  fontColor: ColorConstant.grey4c4c),
-                            )
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: getHeight(15),
-                      ),
+                      // Container(
+                      //   decoration: BoxDecoration(
+                      //       borderRadius: BorderRadius.circular(15),
+                      //       color: ColorConstant.primaryYellow),
+                      //   padding: EdgeInsets.symmetric(
+                      //       horizontal: getWidth(18), vertical: getHeight(10)),
+                      //   child: Column(
+                      //     crossAxisAlignment: CrossAxisAlignment.start,
+                      //     children: [
+                      //       Row(
+                      //         children: [
+                      //           CustomImageView(
+                      //             svgPath: ImageConstant.warning,
+                      //           ),
+                      //           SizedBox(
+                      //             width: getWidth(10),
+                      //           ),
+                      //           Text(
+                      //             AppString.lowBattery,
+                      //             style: CTC.style(14,
+                      //                 fontWeight: FontWeight.w600),
+                      //           )
+                      //         ],
+                      //       ),
+                      //       SizedBox(
+                      //         height: getHeight(15),
+                      //       ),
+                      //       Text(
+                      //         AppString.lowBatteryDes,
+                      //         style: CTC.style(12,
+                      //             fontColor: ColorConstant.grey4c4c),
+                      //       )
+                      //     ],
+                      //   ),
+                      // ),
+                      // SizedBox(
+                      //   height: getHeight(15),
+                      // ),
                       Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
