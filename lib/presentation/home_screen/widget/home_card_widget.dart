@@ -31,7 +31,7 @@ class HomeMenuCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   SizedBox(
-                    height: getHeight(23),
+                    height: getHeight(18),
                   ),
                   Container(
                     decoration: BoxDecoration(
@@ -42,8 +42,8 @@ class HomeMenuCard extends StatelessWidget {
                         horizontal: getHeight(10), vertical: getHeight(10)),
                     child: CustomImageView(
                       svgPath: homeMenu.image,
-                      height: getHeight(35),
-                      width: getHeight(35),
+                      height: getHeight(40),
+                      width: getHeight(40),
                     ),
                   ),
                   SizedBox(

@@ -4,6 +4,7 @@ class AppString {
   static const String logTest = "Log a Test";
   static const String measureVolts = "Measure Volts";
   static const String logs = "Logs";
+  static const String viewLogs = "View logs";
   static const String userManual = "User Manual";
   static const String scanForDevices = "Scan for devices";
   static const String setting = "Settings";
@@ -17,6 +18,8 @@ class AppString {
   static const String testType = "Test Type*";
   static const String testTypes = "Test Type";
   static const String name = "Name";
+  static const String checkBoxText =
+      "I confirm that earths have been connected";
   static const String notes = "Notes";
   static const String shareLog = "Share Log";
   static const String downloadPDF = "Download PDF";
@@ -33,7 +36,7 @@ class AppString {
   static const String fromBNumber = "Form B Number";
   static const String fromCNumber = "Form C Number";
   static const String location = "Location";
-  static const String enterPin = "Enter Pin";
+
   static const String duration = "Duration";
   static const String securityPin = "Security Pin";
   static const String enterPinSettingText =
@@ -90,9 +93,14 @@ class AppString {
   static const String addLicencePhoto = "Add Licence Photo";
   static const String addTestImage = "Add an Image";
   static const String overwrite = "Overwrite oldest record";
+  static const String fieldsMissText =
+      "You have missed some of the fields in the form, you must complete all mandatory fields before continuing. The fields missed are outlined in red.\n\nIf you want to go ahead with the test without completing all non-mandatory fields, tap Proceed to Test again to continue.";
   static const String activeTest = "Active Test Display";
   static const String meterView = "Meter View";
   static const String lowBattery = "Low Battery";
+  static const String enterPin = "Enter Pin";
+  static const String proceed = "Proceed";
+  static const String fieldsMiss = "Fields Missed";
   static const String attentionCalibration = "Attention Calibration";
   static const String createLogText = "Do you want to accept this log?";
   static const String warningDetectedDes =

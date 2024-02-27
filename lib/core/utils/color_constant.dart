@@ -17,8 +17,9 @@ class ColorConstant {
   static const Color greyD3 = Color(0xFFD3D3D3);
   static const Color greyF5 = Color(0xFFF5F5F5);
   static const Color primaryWhite = Color(0xFFFFFFFF);
-  static const Color primaryWhiteDark = Color(0xFF2B2B39);
-  static const Color primaryYellow = Color(0xFFFFB628);
+  static const Color primaryWhiteDark = Color(0xFF303030);
+  // static const Color primaryYellow = Color(0xFFFFB628);
+  static const Color primaryYellow = Color(0xFFFBBC31);
   static const Color backGroundColor = Color(0xFFF4F4F4);
   static const Color backGroundColorDark = Color(0xFF202029);
   static const Color grey4c4c = Color(0xFF4C4C4C);
@@ -30,7 +31,14 @@ class ColorConstant {
   static Color backgroundColor(BuildContext context) {
     return Theme.of(context).brightness == Brightness.light
         ? Color(0xFFF4F4F4) // Light mode background color
-        : Color(0xFF202029); // Dark mode background color
+        : Color(0xFF1E1E1E); //
+    // Dark mode background color
+  }
+
+  static Color appBarColor(BuildContext context) {
+    return Theme.of(context).brightness == Brightness.light
+        ? primaryBlue // Light mode background color
+        : Color(0xFF1E1E1E); // Dark mode background color
   }
 
   static Color backgroundTextField(BuildContext context) {

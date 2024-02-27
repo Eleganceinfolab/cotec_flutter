@@ -47,15 +47,16 @@ class AppRoutes {
           GetStartScreenBinding(),
         ],
         transition: Transition.rightToLeft,
-        transitionDuration: const Duration(milliseconds: 200)),
+        transitionDuration: const Duration(milliseconds: 500)),
     GetPage(
-        name: homeScreenRoute,
-        page: () => const HomeScreen(),
-        bindings: [
-          HomeScreenBinding(),
-        ],
-        transition: Transition.rightToLeft,
-        transitionDuration: const Duration(milliseconds: 200)),
+      name: homeScreenRoute,
+      page: () => const HomeScreen(),
+      bindings: [
+        HomeScreenBinding(),
+      ],
+      transition: Transition.fade,
+      // transitionDuration: const Duration(milliseconds: 500)
+    ),
     GetPage(
         name: logTestScreenRoute,
         page: () => const LogTestScreen(),

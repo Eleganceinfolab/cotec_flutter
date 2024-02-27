@@ -244,7 +244,7 @@ class LogDetailsScreen extends GetWidget<LogDetailsScreenController> {
                 ),
                 AppElevatedButton(
                   hasGradient: false,
-                  buttonColor: ColorConstant.containerBackGround(context),
+                  buttonColor: ColorConstant.backgroundColor(context),
                   buttonName: AppString.shareLog,
                   textColor: ColorConstant.textBlueToYellow(context),
                   onPressed: () {},

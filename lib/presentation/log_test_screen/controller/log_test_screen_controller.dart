@@ -12,6 +12,7 @@ class LogTestScreenController extends GetxController {
   TextEditingController locationController = TextEditingController();
 
   RxBool nameValidate = false.obs;
+  RxBool checkBoxValidate = false.obs;
   RxBool ptsValidate = false.obs;
   RxBool companyValidate = false.obs;
   RxBool testTypeValidate = false.obs;
@@ -34,6 +35,10 @@ class LogTestScreenController extends GetxController {
     super.onInit();
   }
 
+  void onChangeCheckBox() {
+    checkBoxValidate.value = !checkBoxValidate.value;
+  }
+
   void clearAll() {
     nameController.clear();
     ptsNumberController.clear();
@@ -44,9 +49,8 @@ class LogTestScreenController extends GetxController {
     selectedValueDrop.value = '';
   }
 
-  void next() {
+  void next(BuildContext context) {
     if (isAllValidate.value) {
-      print('object == ${isAllValidate.value}');
       if (selectedValueDrop.isEmpty) {
         testTypeValidate.value = true;
         isAllValidate.value = true;
@@ -82,13 +86,7 @@ class LogTestScreenController extends GetxController {
         bNumberValidate.value = false;
         isAllValidate.value = false;
       }
-      // if (cNumberController.text.isEmpty) {
-      //   cNumberValidate.value = true;
-      //   isAllValidate.value = true;
-      // } else {
-      //   cNumberValidate.value = false;
-      //   isAllValidate.value = false;
-      // }
+
       // if (locationController.text.isEmpty) {
       //   locationValidate.value = true;
       //   isAllValidate.value = true;
@@ -97,9 +95,49 @@ class LogTestScreenController extends GetxController {
       //   isAllValidate.value = false;
       // }
     } else {
+      if (!checkBoxValidate.value) {
+        fieldsMissedDialog(context);
+      } else {
+        Get.offAndToNamed(AppRoutes.activeTestScreenRoute);
+      }
+      print('object == ${checkBoxValidate.value}');
       print('object == ${isAllValidate.value}');
-
-      Get.offAndToNamed(AppRoutes.activeTestScreenRoute);
     }
+  }
+
+  void fieldsMissedDialog(BuildContext context) {
+    return CommonConstant.instance.commonShowDialogs(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(
+              child: Text(
+                AppString.fieldsMiss,
+                style: CTC.style(21,
+                    fontWeight: FontWeight.w600,
+                    fontColor: ColorConstant.textBlackToYellow(context)),
+              ),
+            ),
+            SizedBox(
+              height: getHeight(10),
+            ),
+            Center(
+              child: Text(
+                AppString.fieldsMissText,
+                textAlign: TextAlign.center,
+                style: CTC.style(14,
+                    fontColor: ColorConstant.textBlackToWhite(context)),
+              ),
+            ),
+            SizedBox(
+              height: getHeight(15),
+            ),
+          ],
+        ),
+        firstButtonTitle: AppString.proceed,
+        firstOnPressed: () {
+          Get.back();
+        },
+        context: context);
   }
 }

@@ -11,7 +11,11 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
     sizeCalculate(context);
     return Scaffold(
         backgroundColor: ColorConstant.backgroundColor(context),
-        appBar: const CommonAppbar(title: AppString.activeTest),
+        appBar: CommonAppbar(
+          title: AppString.activeTest,
+          statusBarColor: ColorConstant.appBarColor(context),
+          backgroundColor: ColorConstant.appBarColor(context),
+        ),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: getWidth(16)),
@@ -100,8 +104,7 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                               knobRadius: 0.12),
                                           // value: double.parse(randomValues.toString()),
                                           animationDuration: 1000,
-                                          animationType:
-                                              AnimationType.ease,
+                                          animationType: AnimationType.ease,
                                           enableAnimation: true,
                                           needleLength: 0.8,
                                         )
@@ -181,8 +184,7 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                               knobRadius: 0.12),
                                           // value: double.parse(randomValues.toString()),
                                           animationDuration: 1000,
-                                          animationType:
-                                          AnimationType.ease,
+                                          animationType: AnimationType.ease,
                                           enableAnimation: true,
                                           needleLength: 0.8,
                                         )
@@ -191,9 +193,9 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                         GaugeAnnotation(
                                             widget: Text(
                                               controller.voltMeterData.value
-                                                  .value ==
-                                                  0.0 ||
-                                                  controller.voltShow.value
+                                                              .value ==
+                                                          0.0 ||
+                                                      controller.voltShow.value
                                                   ? '0\nV'
                                                   : '${controller.voltMeterData.value.value.toStringAsFixed(2)}\n${controller.voltMeterData.value.voltage}',
                                               key: ValueKey(controller
@@ -203,15 +205,13 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                               style: CTC.style(44,
                                                   fontColor: ColorConstant
                                                       .textGrey4c4cToWhite(
-                                                      context),
+                                                          context),
                                                   fontWeight: FontWeight.bold),
                                             ),
                                             angle: 90,
                                             positionFactor: 0.7)
                                       ],
                                     ),
-
-
                                   ]),
                             )
                           : Container(
@@ -225,8 +225,7 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                   borderRadius: BorderRadius.circular(12)),
                               padding: EdgeInsets.symmetric(
                                   vertical: getHeight(30),
-                                  horizontal: getWidth(50)
-                              ),
+                                  horizontal: getWidth(50)),
                               child: Column(
                                 children: [
                                   Text(
@@ -273,7 +272,9 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                     controller.hasVoiceActive.value = value;
                                   },
                                   trackColor: ColorConstant.backGroundColor,
-                                  thumbColor: ColorConstant.primaryWhite,
+                                  thumbColor: controller.hasVoiceActive.value
+                                      ? ColorConstant.primaryBlack
+                                      : ColorConstant.primaryWhite,
                                   activeColor: ColorConstant.primaryYellow,
                                 ),
                               ),
@@ -298,7 +299,9 @@ class ActiveTestScreen extends GetWidget<ActiveTestScreenController> {
                                     controller.hasMeterView.value = value;
                                   },
                                   trackColor: ColorConstant.backGroundColor,
-                                  thumbColor: ColorConstant.primaryWhite,
+                                  thumbColor: controller.hasMeterView.value
+                                      ? ColorConstant.primaryBlack
+                                      : ColorConstant.primaryWhite,
                                   activeColor: ColorConstant.primaryYellow,
                                 ),
                               ),

@@ -28,6 +28,12 @@ abstract class CTC {
             fontSize: getFontSize(14), //7.5.sp
             fontWeight: fontWeight ?? _defaultFontWeight,
             color: fontColor ?? defaultFontColor);
+      case 13:
+        return TextStyle(
+            fontFamily: fontFamily ?? _defaultFontFamily,
+            fontSize: getFontSize(13), //7.5.sp
+            fontWeight: fontWeight ?? _defaultFontWeight,
+            color: fontColor ?? defaultFontColor);
       case 16:
         return TextStyle(
             fontFamily: fontFamily ?? _defaultFontFamily,

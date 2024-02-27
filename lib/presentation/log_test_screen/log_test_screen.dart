@@ -115,6 +115,42 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
                     style: CTC.style(14,
                         fontColor: ColorConstant.textBlackToWhite(context)),
                   ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Obx(() => IconButton(
+                          onPressed: () {
+                            controller.onChangeCheckBox();
+                            if (controller.checkBoxValidate.value == true) {
+                              controller.isAllValidate.value = false;
+                            }
+                          },
+                          highlightColor: ColorConstant.transparent,
+                          focusColor: ColorConstant.transparent,
+                          splashColor: ColorConstant.transparent,
+                          icon: Icon(
+                            controller.checkBoxValidate.value
+                                ? Icons.check_box
+                                : Icons.check_box_outline_blank,
+                            size: 30,
+                            color: ColorConstant.textBlueToYellow(context),
+                          ))),
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.only(top: 10),
+                          child: Text(
+                            AppString.checkBoxText,
+                            style: CTC.style(13,
+                                fontColor:
+                                    ColorConstant.text00ToWhite(context)),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: getHeight(10),
+                  ),
                   titleText(
                       context: context,
                       title: AppString.name,
@@ -207,7 +243,7 @@ class LogTestScreen extends GetWidget<LogTestScreenController> {
                           child: AppElevatedButton(
                         buttonName: AppString.proceedToTest,
                         onPressed: () {
-                          controller.next();
+                          controller.next(context);
                         },
                       ))
                     ],

@@ -7,13 +7,17 @@ class CommonAppbar extends StatelessWidget implements PreferredSizeWidget {
   final void Function()? clearOnTap;
   final bool hasActions;
   final bool hasBack;
+  final Color? statusBarColor;
+  final Color? backgroundColor;
   const CommonAppbar(
       {Key? key,
       this.onTap,
       this.clearOnTap,
       this.title,
       this.hasActions = false,
-      this.hasBack = true})
+      this.hasBack = true,
+      this.statusBarColor,
+      this.backgroundColor})
       : super(key: key);
 
   @override
@@ -21,14 +25,15 @@ class CommonAppbar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       systemOverlayStyle: SystemUiOverlayStyle(
         // Status bar color
-        statusBarColor: ColorConstant.primaryBlue,
+        statusBarColor:
+            statusBarColor ?? ColorConstant.appBarColor(context),
 
         // Status bar brightness (optional)
         statusBarIconBrightness: Brightness.light, // For Android (dark icons)
         statusBarBrightness: Brightness.dark, // For iOS (dark icons)
-
       ),
-      backgroundColor: ColorConstant.primaryBlue,
+      backgroundColor:
+          backgroundColor ?? ColorConstant.appBarColor(context),
       automaticallyImplyLeading: false,
       leading: hasBack
           ? Bounce(
@@ -36,9 +41,9 @@ class CommonAppbar extends StatelessWidget implements PreferredSizeWidget {
                   () {
                     Get.back();
                   },
-              child: IconButton(
+              child: const IconButton(
                 onPressed: null,
-                icon: const Icon(
+                icon: Icon(
                   Icons.arrow_back_ios_new_rounded,
                   color: ColorConstant.primaryWhite,
                 ),

@@ -3,15 +3,16 @@ import 'dart:async';
 import 'package:cotec/core/app_export.dart';
 
 class SplashScreenController extends GetxController {
+  RxBool isStarted = false.obs;
   @override
   void onInit() {
     changeRoute();
     super.onInit();
   }
 
-  Future changeRoute() async {
-    Future.delayed(const Duration(milliseconds: 4000), () {
-      Get.offAllNamed(AppRoutes.getStartScreenRoute);
+  void changeRoute() async {
+    Timer(Duration(milliseconds: 4000), () {
+      isStarted.value = true;
     });
   }
 }
